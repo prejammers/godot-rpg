@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3b51iu1fhfqp"]
+
+[ext_resource type="Texture2D" uid="uid://br06a6nxc4cox" path="res://Art/Little Dude Sprite Sheet.png" id="1_cnwg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdvh2"]
+atlas = ExtResource("1_cnwg4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wavla"]
+atlas = ExtResource("1_cnwg4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylv6k"]
+atlas = ExtResource("1_cnwg4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00qsm"]
+atlas = ExtResource("1_cnwg4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxii5"]
+atlas = ExtResource("1_cnwg4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hntqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdvh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wavla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylv6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00qsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxii5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hntqp")
