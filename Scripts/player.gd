@@ -5,6 +5,13 @@ const SPEED = 300
 
 func _physics_process(delta):
 	player_movement(delta)
+	get_input()
+	move_and_slide()
+	
+func get_input():
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	velocity = input_direction * SPEED
+	
 	
 func player_movement(delta):
 	
@@ -33,7 +40,6 @@ func player_movement(delta):
 		velocity.x = 0
 		velocity.y = 0
 		
-	move_and_slide()
 func play_anim(movement):
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
