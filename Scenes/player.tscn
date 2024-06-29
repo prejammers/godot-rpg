@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=15 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Texture2D" uid="uid://br06a6nxc4cox" path="res://Art/Little Dude Sprite Sheet.png" id="1_cnwg4"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
 [ext_resource type="Texture2D" uid="uid://bxeroh23ju6cy" path="res://Art/Little Dude walking Right+left.png" id="3_f60ei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdvh2"]
 atlas = ExtResource("1_cnwg4")
@@ -84,7 +87,11 @@ animations = [{
 script = ExtResource("1_khb6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_1hgcr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_hntqp")
 animation = &"Walking"
