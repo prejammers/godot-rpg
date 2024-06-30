@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
-[ext_resource type="Texture2D" uid="uid://uwuk7g2n7sq0" path="res://sprites/skelly.png" id="1_bm00x"]
+[ext_resource type="Texture2D" uid="uid://uwuk7g2n7sq0" path="res://Art/enemy/skelly.png" id="1_bm00x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eki3h"]
 size = Vector2(7, 14)
