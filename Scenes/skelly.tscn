@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://do1idqylb3f7q"]
+
+[ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
+[ext_resource type="Texture2D" uid="uid://uwuk7g2n7sq0" path="res://sprites/skelly.png" id="1_bm00x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eki3h"]
+size = Vector2(7, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i66n7"]
+radius = 64.0703
+
+[node name="Skelly" type="CharacterBody2D"]
+script = ExtResource("1_5vdm3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_eki3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bm00x")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_i66n7")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

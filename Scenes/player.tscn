@@ -83,7 +83,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 3
 script = ExtResource("1_khb6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -95,3 +96,11 @@ shape = SubResource("CircleShape2D_1hgcr")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_hntqp")
 animation = &"Walking"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 67
+limit_top = -1
+limit_right = 817
+limit_bottom = 455
+position_smoothing_enabled = true
