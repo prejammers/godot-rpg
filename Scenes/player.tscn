@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=16 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Texture2D" uid="uid://br06a6nxc4cox" path="res://Art/Little Dude Sprite Sheet.png" id="1_cnwg4"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
@@ -26,6 +26,10 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxii5"]
 atlas = ExtResource("1_cnwg4")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihtwt"]
+atlas = ExtResource("3_f60ei")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfva1"]
 atlas = ExtResource("3_f60ei")
@@ -62,7 +66,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_vxii5")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihtwt")
+}],
+"loop": true,
+"name": &"side_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -79,7 +91,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mwciq")
 }],
 "loop": true,
-"name": &"Walking",
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -95,7 +107,7 @@ shape = SubResource("CircleShape2D_1hgcr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_hntqp")
-animation = &"Walking"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
