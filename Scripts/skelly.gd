@@ -47,5 +47,6 @@ func _on_player_collision_body_exited(body):
 	player = body
 	player_colliding = false
 	
-
+func enemy():
+	pass
 
