@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cb61nyye3vii3"]
 
-[ext_resource type="Texture2D" uid="uid://pyaqb350lakn" path="res://sprites/tilesets/grass.png" id="1_1gjdc"]
-[ext_resource type="Texture2D" uid="uid://dxcf6fmhk11ks" path="res://sprites/tilesets/plains.png" id="2_wgndj"]
-[ext_resource type="Texture2D" uid="uid://bvxtjrpslqxis" path="res://sprites/objects/objects.png" id="3_qobip"]
+[ext_resource type="Texture2D" uid="uid://5samv7d2xpg8" path="res://sprites/tilesets/grass.png" id="1_1gjdc"]
+[ext_resource type="Texture2D" uid="uid://b57ug1jot3nbd" path="res://sprites/tilesets/plains.png" id="2_wgndj"]
+[ext_resource type="Texture2D" uid="uid://d1k3fl5yi4n6d" path="res://sprites/objects/objects.png" id="3_qobip"]
 [ext_resource type="PackedScene" uid="uid://c3b51iu1fhfqp" path="res://Scenes/player.tscn" id="4_h8ue4"]
 [ext_resource type="PackedScene" uid="uid://do1idqylb3f7q" path="res://Scenes/skelly.tscn" id="5_hlb0g"]
 
@@ -191,3 +191,9 @@ position = Vector2(325, 390)
 
 [node name="Skelly" parent="." instance=ExtResource("5_hlb0g")]
 position = Vector2(330, 275)
+
+[node name="Skelly2" parent="." instance=ExtResource("5_hlb0g")]
+position = Vector2(344, 273)
+
+[node name="Skelly3" parent="." instance=ExtResource("5_hlb0g")]
+position = Vector2(356, 257)
