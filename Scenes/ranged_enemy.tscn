@@ -38,6 +38,12 @@ modulate = Color(0.916371, 0.776356, 0.184983, 1)
 position = Vector2(1.49616, 1.004)
 texture = ExtResource("1_460fp")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="AimToPlayer" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
