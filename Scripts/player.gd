@@ -4,7 +4,8 @@ var current_dir = "none"
 const SPEED = 150
 var max_hp = 10
 var cur_hp = 10
-
+func _ready():
+	$PlayerAnimation.play("idle_down")
 func _physics_process(delta):
 	player_movement(delta)
 	get_input()
@@ -44,32 +45,35 @@ func player_movement(delta):
 		
 func play_anim(movement):
 	var dir = current_dir
-	var anim = $AnimatedSprite2D
+	var anim = $"Character Sprite"
 	
 	if dir == "right":
-		anim.flip_h = false
 		if movement == 1:
-			anim.play("walking")
+			$PlayerAnimation.play("walk_right")
 		elif movement == 0:
-			anim.play("side_idle")
+			#anim.play("side_idle")
+			$PlayerAnimation.play("idle_right")
 	if dir == "left":
-		anim.flip_h = true
 		if movement == 1:
-			anim.play("walking")
+			$PlayerAnimation.play("walk_left")
+			#anim.play("walking")
 		elif movement == 0:
-			anim.play("side_idle")
+			#anim.play("side_idle")
+			$PlayerAnimation.play("idle_left")
 	if dir == "up":
-		anim.flip_h = false
 		if movement == 1:
-			anim.play("idle")
+			$PlayerAnimation.play("walk_up")
+			#anim.play("walk_up")
 		elif movement == 0:
-			anim.play("idle")
+			$PlayerAnimation.play("idle_up")
+			#anim.play("idle_up")
 	if dir == "down":
-		anim.flip_h = true
 		if movement == 1:
-			anim.play("idle")
+			$PlayerAnimation.play("walk_down")
+			#anim.play("walk_down")
 		elif movement == 0:
-			anim.play("idle")
+			$PlayerAnimation.play("idle_down")
+			#anim.play("idle_down")
 
 func player():
 	pass
