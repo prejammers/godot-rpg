@@ -37,6 +37,8 @@ func player_movement(delta):
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = -SPEED
+	elif Input.is_action_just_pressed("shoot"):
+		shoot_fireball()
 	else:
 		play_anim(0)
 		velocity.x = 0
@@ -73,3 +75,6 @@ func play_anim(movement):
 
 func player():
 	pass
+
+func shoot_fireball():
+	print("Fireball shoot")
