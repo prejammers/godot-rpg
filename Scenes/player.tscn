@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purpe.png" id="4_a3qtm"]
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mr8yg"]
+radius = 4.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_6poxe"]
 length = 0.001
@@ -568,13 +569,14 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_khb6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 9)
-shape = SubResource("CircleShape2D_1hgcr")
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_mr8yg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -586,11 +588,12 @@ position_smoothing_enabled = true
 
 [node name="Character Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, 1)
 scale = Vector2(0.235, 0.235)
 texture = ExtResource("5_ubhcl")
-hframes = 18
+hframes = 30
 vframes = 4
-frame = 54
+frame = 90
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 libraries = {

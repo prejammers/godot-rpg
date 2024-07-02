@@ -4,6 +4,7 @@ var current_dir = "none"
 const SPEED = 150
 var max_hp = 10
 var cur_hp = 10
+
 func _ready():
 	$PlayerAnimation.play("idle_down")
 func _physics_process(delta):
