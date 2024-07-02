@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3uj6p23o8dg5"]
+
+[ext_resource type="Texture2D" uid="uid://uwuk7g2n7sq0" path="res://Art/enemy/skelly.png" id="1_460fp"]
+[ext_resource type="Script" path="res://Scripts/ranged_enemy.gd" id="1_jy8pw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm15e"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq8v7"]
+radius = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db883"]
+size = Vector2(10, 16)
+
+[node name="RangedEnemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_jy8pw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tm15e")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_aq8v7")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_db883")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.916371, 0.776356, 0.184983, 1)
+position = Vector2(1.49616, 1.004)
+texture = ExtResource("1_460fp")
