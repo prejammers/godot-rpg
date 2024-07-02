@@ -16,10 +16,10 @@ func _physics_process(delta):
 	if player_is_colliding == true and hit_cooldown == false:
 		player.cur_hp = player.cur_hp - 1
 		hit_cooldown = true
-		start_timer()
+		set_hit_cooldown_timer()
 
 
-func start_timer():
+func set_hit_cooldown_timer():
 	while true:
 		await get_tree().create_timer(1.0).timeout
 		hit_cooldown = false
