@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm6exrxgv6cn6"]
+
+[ext_resource type="Texture2D" uid="uid://bptxfb0xjggjj" path="res://Art/projectile/fireball.png" id="1_hks5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awewg"]
+radius = 7.0
+
+[node name="Fireball" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+rotation = -1.5708
+texture = ExtResource("1_hks5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 0)
+rotation = -1.5708
+shape = SubResource("CircleShape2D_awewg")
