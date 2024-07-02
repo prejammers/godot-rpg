@@ -27,6 +27,8 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_aq8v7")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_db883")
@@ -35,3 +37,8 @@ shape = SubResource("RectangleShape2D_db883")
 modulate = Color(0.916371, 0.776356, 0.184983, 1)
 position = Vector2(1.49616, 1.004)
 texture = ExtResource("1_460fp")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
