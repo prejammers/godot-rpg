@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://do1idqylb3f7q"]
+[gd_scene load_steps=10 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
 [ext_resource type="Texture2D" uid="uid://uwuk7g2n7sq0" path="res://Art/enemy/skelly.png" id="1_bm00x"]
+[ext_resource type="PackedScene" uid="uid://jj4t86tp8up0" path="res://Scenes/hitbox.tscn" id="3_h4vhv"]
+[ext_resource type="PackedScene" uid="uid://bncf63kv8yqpk" path="res://Scenes/hurtbox.tscn" id="4_4msbm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -13,7 +15,12 @@ radius = 64.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs4nu"]
 size = Vector2(11.25, 16)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_81lkw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fuk81"]
+
 [node name="Skelly" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
 script = ExtResource("1_5vdm3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,6 +44,27 @@ shape = SubResource("RectangleShape2D_fs4nu")
 position = Vector2(1.49616, 1.004)
 texture = ExtResource("1_bm00x")
 
+[node name="Hitbox" parent="." instance=ExtResource("3_h4vhv")]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_81lkw")
+debug_color = Color(0.303972, 0.62123, 0, 0.372549)
+
+[node name="hurtbox" parent="." instance=ExtResource("4_4msbm")]
+collision_layer = 2
+monitoring = false
+monitorable = true
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+scale = Vector2(0.45, 0.45)
+shape = SubResource("CapsuleShape2D_fuk81")
+debug_color = Color(1, 0, 0, 0.533333)
+
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_entered"]
 [connection signal="body_exited" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_exited"]
+
+[editable path="Hitbox"]
+[editable path="hurtbox"]

@@ -14,8 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if player_colliding == true and hit_cooldown == false:
-		player.cur_hp = player.cur_hp - 1
-		print(player.cur_hp)
+		print(player)
 		hit_cooldown = true
 		start_timer()
 		

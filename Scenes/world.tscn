@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cb61nyye3vii3"]
 
-[ext_resource type="Texture2D" uid="uid://dr3ph0fpp2gdn" path="res://sprites/tilesets/grass.png" id="1_1gjdc"]
-[ext_resource type="Texture2D" uid="uid://svw2hjkaww54" path="res://sprites/tilesets/plains.png" id="2_wgndj"]
-[ext_resource type="Texture2D" uid="uid://btugic025saf" path="res://sprites/objects/objects.png" id="3_qobip"]
+[ext_resource type="Texture2D" uid="uid://bj47pyin2r2v2" path="res://sprites/tilesets/grass.png" id="1_1gjdc"]
+[ext_resource type="Texture2D" uid="uid://bvf06x0jdwplp" path="res://sprites/tilesets/plains.png" id="2_wgndj"]
+[ext_resource type="Texture2D" uid="uid://dwh2bmnf2jb8k" path="res://sprites/objects/objects.png" id="3_qobip"]
 [ext_resource type="PackedScene" uid="uid://c3b51iu1fhfqp" path="res://Scenes/player.tscn" id="4_h8ue4"]
 [ext_resource type="PackedScene" uid="uid://do1idqylb3f7q" path="res://Scenes/skelly.tscn" id="5_hlb0g"]
 
