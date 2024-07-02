@@ -22,6 +22,7 @@ func _physics_process(delta):
 	
 	if $Timer.time_left == 0 and player_is_near:
 		shoot_projectile()
+		$Timer.start()
 		
 
 
@@ -33,7 +34,7 @@ func set_hit_cooldown_timer():
 
 func shoot_projectile():
 	$AimToPlayer.look_at(player.global_position)
-	var projectile : RigidBody2D = projectile_scene.instance()
+	var projectile : RigidBody2D = projectile_scene.instantiate()
 	projectile.global_position = self.global_position
 	projectile.rotation_degrees = $AimToPlayer.rotation_degrees
 	projectile.apply_impulse(Vector2(500, 0).rotated(projectile.rotation))
