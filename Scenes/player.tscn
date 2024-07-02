@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
-[ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purpe.png" id="4_a3qtm"]
+[ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
@@ -597,4 +597,4 @@ libraries = {
 "": SubResource("AnimationLibrary_ybpxq")
 }
 autoplay = "idle_down"
-speed_scale = 2.0
+speed_scale = 3.0
