@@ -7,6 +7,10 @@ var player = null
 var player_colliding: bool = false
 var hit_cooldown:bool = false
 
+var direction = null
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,9 +26,23 @@ func _physics_process(delta):
 		
 	if player_chase:
 		var target_position = player.position
-		var direction = (target_position - position).normalized()
+		direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
+		print(direction)
+		if direction.y > 0: #move down
+			#if direction.y * 1 > direction.x * 1:
+				$SkeletonAnimation.play("skeleton_walk_down")
+		elif direction.y < 0: #move up
+				$SkeletonAnimation.play("skeleton_walk_up")  
+		if direction.x > 0: #move right
+			if direction.x * 1 > direction.y * 1:
+				$SkeletonAnimation.play("skeleton_walk_right")
+		elif direction.x < 0: #move left
+			if direction.x * 1 < direction.y * 1:
+				$SkeletonAnimation.play("skeleton_walk_left") 
+
+
 
 func start_timer():
 	while true:
@@ -51,3 +69,6 @@ func _on_player_collision_body_exited(body):
 func enemy():
 	pass
 
+#func AnimationLoop():
+	#animation = anim_mode + "_" + anim_direction
+	#get_node ("AnimationPlayer").play(animation)
