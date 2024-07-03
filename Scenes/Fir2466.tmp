@@ -29,7 +29,6 @@ animations = [{
 script = ExtResource("1_hnnd8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(36, 0)
 shape = SubResource("CircleShape2D_4d2hh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -38,7 +37,6 @@ position = Vector2(18, 0)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nhkl7")
 animation = &"Travel"
-metadata/_edit_lock_ = true
 
 [connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animatedSprite_animation_finished"]

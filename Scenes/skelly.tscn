@@ -16,21 +16,21 @@ size = Vector2(11.25, 16)
 [node name="Skelly" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_5vdm3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource("CapsuleShape2D_qra0v")
 
-[node name="PlayerDetection" type="Area2D" parent="CollisionShape2D"]
+[node name="PlayerDetection" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerDetection"]
 shape = SubResource("CircleShape2D_i66n7")
 
-[node name="PlayerCollision2" type="Area2D" parent="CollisionShape2D"]
+[node name="PlayerCollision2" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerCollision2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerCollision2" groups=["Enemy"]]
 shape = SubResource("RectangleShape2D_fs4nu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

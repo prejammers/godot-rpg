@@ -8,6 +8,7 @@ func _physics_process(delta):
 		global_position += transform.x * speed * delta
 
 func _on_FireBall_area_entered(area):
+	print("fireball area entered")
 	if area.is_in_group("Enemy"):
 		hit = true
 		get_node("AnimatedSprite2D").play("Hit")
