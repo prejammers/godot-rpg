@@ -6,10 +6,15 @@ var current_dir = "none"
 const SPEED = 150
 var max_hp = 10
 var cur_hp = 10
+var shoot_cooldown: bool = false
 
 
 func _ready():
 	$PlayerAnimation.play("idle_down")
+	
+func _process(delta):
+	pass
+	
 func _physics_process(delta):
 	player_movement(delta)
 	get_input()
@@ -18,14 +23,23 @@ func _physics_process(delta):
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * SPEED
-	
+
+func start_timer():
+	while true:
+		await get_tree().create_timer(1.0).timeout
+		shoot_cooldown = false
+		
 func Shoot():
-	var fireball = FireBall.instantiate()
-	add_child(fireball)
-	fireball.transform = $Aim.transform
+	if not shoot_cooldown:
+		shoot_cooldown = true
+		var fireball = FireBall.instantiate()
+		get_parent().add_child(fireball)
+		fireball.global_transform = $Aim.global_transform
+		start_timer()
+		
 	
 func player_movement(delta):
-	if Input.is_action_pressed("fire"):
+	if Input.is_action_pressed("fire") and shoot_cooldown == false:
 		Shoot()
 		
 	if Input.is_action_pressed("alt_fire"):
