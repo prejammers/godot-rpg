@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dx3045b84p7ol"
-path="res://.godot/imported/Character Walking Blonde.png-8925610a74131e4b8c2e2fbdf01afbb4.ctex"
+path="res://.godot/imported/Character Walking Blonde texture.png-ef7795dc5a8f30e847a2ab74ad77ee00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Character Walking Blonde.png"
-dest_files=["res://.godot/imported/Character Walking Blonde.png-8925610a74131e4b8c2e2fbdf01afbb4.ctex"]
+source_file="res://Art/Character Walking Blonde texture.png"
+dest_files=["res://.godot/imported/Character Walking Blonde texture.png-ef7795dc5a8f30e847a2ab74ad77ee00.ctex"]
 
 [params]
 
