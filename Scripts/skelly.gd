@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 40
+var health = 10
 var player_chase = false
 var player = null
 var player_colliding: bool = false
