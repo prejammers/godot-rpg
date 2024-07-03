@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=16 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
@@ -567,6 +567,15 @@ _data = {
 "walk_up": SubResource("Animation_3e2tw")
 }
 
+[sub_resource type="GDScript" id="GDScript_tlgsq"]
+script/source = "extends Marker2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _process(delta):
+	look_at(get_global_mouse_position())
+"
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_khb6h")
@@ -597,4 +606,8 @@ libraries = {
 "": SubResource("AnimationLibrary_ybpxq")
 }
 autoplay = "idle_down"
-speed_scale = 3.0
+speed_scale = 2.0
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(-7, 5)
+script = SubResource("GDScript_tlgsq")

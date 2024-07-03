@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+const FireBall = preload("res://Scenes/Fireball.tscn")
+
 var current_dir = "none"
 const SPEED = 150
 var max_hp = 10
 var cur_hp = 10
+
 
 func _ready():
 	$PlayerAnimation.play("idle_down")
@@ -16,9 +19,17 @@ func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * SPEED
 	
+func Shoot():
+	var fireball = FireBall.instantiate()
+	add_child(fireball)
+	fireball.transform = $Aim.transform
 	
 func player_movement(delta):
-	
+	if Input.is_action_pressed("fire"):
+		Shoot()
+		
+	if Input.is_action_pressed("alt_fire"):
+		pass
 	if Input.is_action_pressed("right"):
 		current_dir = "right"
 		play_anim(1)
