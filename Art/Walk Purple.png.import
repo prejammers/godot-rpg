@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqq3nntnatthd"
-path="res://.godot/imported/Walk Purpe.png-5260cac102e60c9b25be5cac3faa016b.ctex"
+path="res://.godot/imported/Walk Purple.png-140d89f36defab0ef1f9f364bd6d8e23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Walk Purpe.png"
-dest_files=["res://.godot/imported/Walk Purpe.png-5260cac102e60c9b25be5cac3faa016b.ctex"]
+source_file="res://Art/Walk Purple.png"
+dest_files=["res://.godot/imported/Walk Purple.png-140d89f36defab0ef1f9f364bd6d8e23.ctex"]
 
 [params]
 
