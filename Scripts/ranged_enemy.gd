@@ -5,6 +5,7 @@ var player = null
 var player_is_near := false
 var player_is_colliding := false
 var hit_cooldown := false
+var is_shooting := false
 
 @onready var projectile_scene = load("res://Scenes/arrow.tscn")
 
@@ -20,9 +21,10 @@ func _physics_process(delta):
 		hit_cooldown = true
 		set_hit_cooldown_timer()
 	
-	if $Timer.time_left == 0 and player_is_near:
-		shoot_projectile()
+	if $Timer.time_left == 0 and player_is_near and not is_shooting:
+		is_shooting = true
 		$Timer.start()
+		shoot_projectile()
 		
 
 
@@ -37,8 +39,8 @@ func shoot_projectile():
 	var projectile : RigidBody2D = projectile_scene.instantiate()
 	projectile.global_position = self.global_position
 	projectile.rotation_degrees = $AimToPlayer.rotation_degrees
-	projectile.apply_impulse(Vector2(500, 0).rotated(projectile.rotation))
 	get_tree().current_scene.add_child(projectile)
+	is_shooting = false
 
 
 func _on_player_detection_body_entered(body):
