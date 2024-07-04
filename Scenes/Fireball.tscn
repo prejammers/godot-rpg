@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvmul6ndeen4w"]
+
+[ext_resource type="Script" path="res://Scripts/Fireball.gd" id="1_hnnd8"]
+[ext_resource type="Texture2D" uid="uid://cajmu4vg1uvdg" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4d2hh"]
+radius = 4.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nhkl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3sdrg")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3sdrg")
+}],
+"loop": true,
+"name": &"Travel",
+"speed": 10.0
+}]
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_hnnd8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 0)
+shape = SubResource("CircleShape2D_4d2hh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.835294, 0.168627, 0, 1)
+position = Vector2(18, 0)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_nhkl7")
+animation = &"Travel"
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animatedSprite_animation_finished"]
