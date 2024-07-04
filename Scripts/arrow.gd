@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 const SPEED = 300
 
