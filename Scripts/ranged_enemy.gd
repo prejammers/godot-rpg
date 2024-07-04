@@ -25,6 +25,13 @@ func _physics_process(delta):
 		is_shooting = true
 		$Timer.start()
 		shoot_projectile()
+	
+	# Enemy will move only if player is too far
+	if player and not player_is_near:
+		var target_position = player.position
+		var direction = (target_position - self.position).normalized()
+		var velocity = direction * SPEED
+		move_and_collide(velocity * delta)
 		
 
 
