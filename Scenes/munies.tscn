@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://6vq71guhgah8"]
+
+[ext_resource type="Script" path="res://money.gd" id="1_ou3ab"]
+
+[node name="Munies" type="Node2D"]
+
+[node name="Money" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_ou3ab")
