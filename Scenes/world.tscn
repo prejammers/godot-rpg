@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cb61nyye3vii3"]
 
-[ext_resource type="Texture2D" uid="uid://degpxyjdiksly" path="res://sprites/tilesets/grass.png" id="1_n8lyq"]
-[ext_resource type="Texture2D" uid="uid://bdwyrxsffjo7x" path="res://sprites/tilesets/plains.png" id="2_1fo2a"]
-[ext_resource type="Texture2D" uid="uid://4kttlr8yywds" path="res://sprites/objects/objects.png" id="3_fa0b6"]
+[ext_resource type="Texture2D" uid="uid://dvkwpwphq8xmc" path="res://sprites/tilesets/grass.png" id="1_n8lyq"]
+[ext_resource type="Texture2D" uid="uid://kaien6w5e3dq" path="res://sprites/tilesets/plains.png" id="2_1fo2a"]
+[ext_resource type="Texture2D" uid="uid://c5cysv7gs3tgm" path="res://sprites/objects/objects.png" id="3_fa0b6"]
 [ext_resource type="PackedScene" uid="uid://c3b51iu1fhfqp" path="res://Scenes/player.tscn" id="4_h8ue4"]
 [ext_resource type="PackedScene" uid="uid://do1idqylb3f7q" path="res://Scenes/skelly.tscn" id="5_hlb0g"]
 [ext_resource type="PackedScene" uid="uid://d3uj6p23o8dg5" path="res://Scenes/ranged_enemy.tscn" id="6_xtopl"]

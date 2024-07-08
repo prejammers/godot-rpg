@@ -6,6 +6,8 @@ var player_is_near := false
 var player_is_colliding := false
 var hit_cooldown := false
 var is_shooting := false
+var player_chase = false
+var direction = null
 
 @onready var projectile_scene = load("res://Scenes/arrow.tscn")
 
@@ -20,6 +22,24 @@ func _physics_process(delta):
 		player.cur_hp = player.cur_hp - 1
 		hit_cooldown = true
 		set_hit_cooldown_timer()
+		
+	if player_chase:
+		var target_position = player.position
+		direction = (target_position - position).normalized()
+		var velocity = direction * SPEED
+		move_and_collide(velocity * delta)
+		print(direction)
+		if direction.y > 0: #move down
+			#if direction.y * 1 > direction.x * 1:
+				$WizardAnimation.play("wizard_down")
+		elif direction.y < 0: #move up
+				$WizardAnimation.play("wizard_up")  
+		if direction.x > 0: #move right
+			if direction.x * 1 > direction.y * 1:
+				$WizardAnimation.play("wizard_right")
+		elif direction.x < 0: #move left
+			if direction.x * 1 < direction.y * 1:
+				$WizardAnimation.play("wizard_left") 
 	
 	if $Timer.time_left == 0 and player_is_near and not is_shooting:
 		is_shooting = true
@@ -33,7 +53,8 @@ func _physics_process(delta):
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
 		
-
+	
+	
 
 func set_hit_cooldown_timer():
 	while true:
@@ -54,10 +75,12 @@ func _on_player_detection_body_entered(body):
 	player = body
 	player_is_near = true
 	$Timer.start()
+	player_chase = true
 
 func _on_player_detection_body_exited(body):
 	player_is_near = false
 	$Timer.stop()
+	player_chase = false
 
 
 func _on_hurtbox_body_entered(body):
