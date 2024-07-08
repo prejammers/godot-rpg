@@ -130,6 +130,7 @@ func enemy_attack():
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print("Player's health is %s" % [str(cur_hp)])
+		$DamageSound.play()
 		
 
 func _on_attack_cooldown_timeout():
