@@ -7,7 +7,7 @@ var player_is_colliding := false
 var hit_cooldown := false
 var is_shooting := false
 
-@onready var projectile_scene = load("res://Scenes/arrow.tscn")
+@onready var projectile_scene = load("res://Scenes/arrow_test.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +43,7 @@ func set_hit_cooldown_timer():
 
 func shoot_projectile():
 	$AimToPlayer.look_at(player.global_position)
-	var projectile : CharacterBody2D = projectile_scene.instantiate()
+	var projectile : Area2D = projectile_scene.instantiate()
 	projectile.global_position = self.global_position
 	projectile.rotation_degrees = $AimToPlayer.rotation_degrees
 	get_tree().current_scene.add_child(projectile)
@@ -66,3 +66,6 @@ func _on_hurtbox_body_entered(body):
 
 func _on_hurtbox_body_exited(body):
 	player_is_colliding = false
+
+func enemy():
+	pass

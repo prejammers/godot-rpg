@@ -29,7 +29,7 @@ func _physics_process(delta):
 		direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
-		print(direction)
+		#print(direction)
 		if direction.y > 0: #move down
 			#if direction.y * 1 > direction.x * 1:
 				$SkeletonAnimation.play("skeleton_walk_down")
