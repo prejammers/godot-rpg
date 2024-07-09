@@ -7,7 +7,7 @@ var player_is_colliding := false
 var hit_cooldown := false
 var is_shooting := false
 
-@onready var projectile_scene = load("res://Scenes/arrow_test.tscn")
+@onready var projectile_scene = load("res://Scenes/arrow.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
