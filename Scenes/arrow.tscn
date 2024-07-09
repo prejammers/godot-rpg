@@ -7,7 +7,7 @@
 radius = 2.0
 height = 26.0
 
-[node name="arrow_test" type="Area2D"]
+[node name="Arrow" type="Area2D"]
 script = ExtResource("1_nb6rq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
