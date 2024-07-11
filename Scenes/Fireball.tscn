@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvmul6ndeen4w"]
 
 [ext_resource type="Script" path="res://Scripts/Fireball.gd" id="1_hnnd8"]
-[ext_resource type="Texture2D" uid="uid://c6c03b28h7csu" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
+[ext_resource type="Texture2D" uid="uid://rlvgv1450x1m" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d2hh"]
 radius = 4.0
@@ -37,7 +37,7 @@ self_modulate = Color(0.835294, 0.168627, 0, 1)
 position = Vector2(18, 0)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nhkl7")
-animation = &"Travel"
+animation = &"Hit"
 metadata/_edit_lock_ = true
 
 [connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
