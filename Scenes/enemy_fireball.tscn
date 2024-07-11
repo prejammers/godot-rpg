@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt4p7m05tnpy8"]
+[gd_scene load_steps=10 format=3 uid="uid://daw2ger0thuag"]
 
-[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_cr44x"]
-[ext_resource type="Texture2D" uid="uid://dkoifbay1apxb" path="res://Art/projectiles/Projectile Arrow Sprite.png" id="2_ybxle"]
+[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_s6s83"]
+[ext_resource type="Texture2D" uid="uid://dhah8sownmmni" path="res://Art/projectiles/Fire Ball.png" id="2_55kxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw1hu"]
-size = Vector2(22, 9)
+size = Vector2(13, 14)
 
 [sub_resource type="Animation" id="Animation_4h8r3"]
 length = 0.001
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -270,13 +270,13 @@ _data = {
 "arrow_proj_up": SubResource("Animation_rybu7")
 }
 
-[node name="Arrow" type="CharacterBody2D"]
+[node name="enemy_fireball" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_cr44x")
+script = ExtResource("1_s6s83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_xw1hu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -291,10 +291,8 @@ rect = Rect2(-3, -1, 6, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.465, -0.385)
-rotation = -1.5708
-scale = Vector2(0.42, 0.42)
-texture = ExtResource("2_ybxle")
-vframes = 4
+scale = Vector2(0.251953, 0.225586)
+texture = ExtResource("2_55kxf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

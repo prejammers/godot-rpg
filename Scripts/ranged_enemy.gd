@@ -9,7 +9,7 @@ var is_shooting := false
 var player_chase = false
 var direction = null
 
-@onready var projectile_scene = load("res://Scenes/arrow.tscn")
+@onready var projectile_scene = load("res://Scenes/enemy_fireball.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

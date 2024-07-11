@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvmul6ndeen4w"]
 
 [ext_resource type="Script" path="res://Scripts/Fireball.gd" id="1_hnnd8"]
-[ext_resource type="Texture2D" uid="uid://cajmu4vg1uvdg" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
+[ext_resource type="Texture2D" uid="uid://c6c03b28h7csu" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d2hh"]
 radius = 4.0

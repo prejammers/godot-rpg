@@ -106,7 +106,7 @@ _data = {
 "wizard_up": SubResource("Animation_baic0")
 }
 
-[node name="RangedEnemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="wizard_skeleton" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_jy8pw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
