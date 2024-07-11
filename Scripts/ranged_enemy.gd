@@ -7,7 +7,7 @@ var player_is_colliding := false
 var hit_cooldown := false
 var is_shooting := false
 
-@onready var projectile_scene = load("res://Scenes/arrow_test.tscn")
+@onready var projectile_scene = load("res://Scenes/arrow.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,11 +16,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	if player_is_colliding == true and hit_cooldown == false:
-		player.cur_hp = player.cur_hp - 1
-		hit_cooldown = true
-		set_hit_cooldown_timer()
-	
 	if $Timer.time_left == 0 and player_is_near and not is_shooting:
 		is_shooting = true
 		$Timer.start()
