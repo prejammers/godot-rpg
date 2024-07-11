@@ -22,36 +22,31 @@ func _physics_process(delta):
 		player.cur_hp = player.cur_hp - 1
 		hit_cooldown = true
 		set_hit_cooldown_timer()
-		
-	if player_chase:
+	
+	# Enemy will move only if player is too far
+	if player and not player_is_near:
 		var target_position = player.position
 		direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
-		print(direction)
-		if direction.y > 0: #move down
-			#if direction.y * 1 > direction.x * 1:
-				$WizardAnimation.play("wizard_down")
-		elif direction.y < 0: #move up
-				$WizardAnimation.play("wizard_up")  
-		if direction.x > 0: #move right
-			if direction.x * 1 > direction.y * 1:
-				$WizardAnimation.play("wizard_right")
-		elif direction.x < 0: #move left
-			if direction.x * 1 < direction.y * 1:
-				$WizardAnimation.play("wizard_left") 
+		if not $WizardAnimation.is_playing():
+			if direction.y > 0: #move down
+				#if direction.y * 1 > direction.x * 1:
+					$WizardAnimation.play("wizard_down")
+			elif direction.y < 0: #move up
+					$WizardAnimation.play("wizard_up")  
+			if direction.x > 0: #move right
+				if direction.x * 1 > direction.y * 1:
+					$WizardAnimation.play("wizard_right")
+			elif direction.x < 0: #move left
+				if direction.x * 1 < direction.y * 1:
+					$WizardAnimation.play("wizard_left") 
+	
 	
 	if $Timer.time_left == 0 and player_is_near and not is_shooting:
 		is_shooting = true
 		$Timer.start()
 		shoot_projectile()
-	
-	# Enemy will move only if player is too far
-	if player and not player_is_near:
-		var target_position = player.position
-		var direction = (target_position - self.position).normalized()
-		var velocity = direction * SPEED
-		move_and_collide(velocity * delta)
 		
 	
 	
