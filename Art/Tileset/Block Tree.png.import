@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://covm75igyol4"
-path="res://.godot/imported/Sword Skeleton Walk.png-461f244dab10e24326762b544a3e9bf6.ctex"
+uid="uid://cbl4o2xpmkbvg"
+path="res://.godot/imported/Block Tree.png-744d69996ad7bdc616610f7ac024c8fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/enemy/Sword Skeleton Walk.png"
-dest_files=["res://.godot/imported/Sword Skeleton Walk.png-461f244dab10e24326762b544a3e9bf6.ctex"]
+source_file="res://Art/Tileset/Block Tree.png"
+dest_files=["res://.godot/imported/Block Tree.png-744d69996ad7bdc616610f7ac024c8fb.ctex"]
 
 [params]
 

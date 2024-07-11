@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtraswmch0u7f"
-path="res://.godot/imported/Sword Skeleton Walk Outlined.png-2377c839054ad5d774042a274c05d76c.ctex"
+uid="uid://tkkqyddedr41"
+path="res://.godot/imported/Wizard Skeleton Walk.png-a0e085cebc39f5f219d38fa163c58c7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/enemy/Sword Skeleton Walk Outlined.png"
-dest_files=["res://.godot/imported/Sword Skeleton Walk Outlined.png-2377c839054ad5d774042a274c05d76c.ctex"]
+source_file="res://Art/enemy/skeletons/Wizard Skeleton Walk.png"
+dest_files=["res://.godot/imported/Wizard Skeleton Walk.png-a0e085cebc39f5f219d38fa163c58c7c.ctex"]
 
 [params]
 
