@@ -1,11 +1,17 @@
 extends CharacterBody2D
 
+## Combat variables
+var enemy_in_attack_range = false
+var enemy_attack_cooldown = true
+var max_hp = 10
+var cur_hp = 10
+var player_alive = true
+
 const FireBall = preload("res://Scenes/Fireball.tscn")
 
 var current_dir = "none"
 const SPEED = 150
-var max_hp = 10
-var cur_hp = 10
+
 var shoot_cooldown: bool = false
 
 
@@ -19,6 +25,12 @@ func _physics_process(delta):
 	player_movement(delta)
 	get_input()
 	move_and_slide()
+	enemy_attack()
+	
+	if cur_hp <= 0:
+		player_alive = false #add whatever death needs to be added (respawn, back to menu, etc.)
+		cur_hp = 0
+		print("Player died")
 	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -103,3 +115,22 @@ func play_anim(movement):
 
 func player():
 	pass
+
+func _on_player_combatbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = true
+
+func _on_player_combatbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = false
+		
+func enemy_attack():
+	if enemy_in_attack_range and enemy_attack_cooldown == true:
+		cur_hp -= 2
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print("Player's health is %s" % [str(cur_hp)])
+		
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true

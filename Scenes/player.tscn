@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=17 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
@@ -576,6 +576,9 @@ func _process(delta):
 	look_at(get_global_mouse_position())
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mlvib"]
+radius = 14.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_khb6h")
@@ -611,3 +614,16 @@ speed_scale = 2.0
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(-7, 5)
 script = SubResource("GDScript_tlgsq")
+
+[node name="player_combatbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_combatbox"]
+position = Vector2(-8, 2)
+shape = SubResource("CircleShape2D_mlvib")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="player_combatbox" to="." method="_on_player_combatbox_body_entered"]
+[connection signal="body_exited" from="player_combatbox" to="." method="_on_player_combatbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://do1idqylb3f7q"]
+[gd_scene load_steps=13 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
-[ext_resource type="Texture2D" uid="uid://dtraswmch0u7f" path="res://Art/enemy/skeletons/Sword Skeleton Walk Outlined.png" id="2_2lnpb"]
+[ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/Sword Skeleton Walk.png" id="2_fd0op"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2lnpb")]
+"values": [ExtResource("2_fd0op")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -73,7 +73,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5.34, -1.85)]
+"values": [Vector2(-3.485, 0.045)]
 }
 
 [sub_resource type="Animation" id="Animation_cnkvq"]
@@ -102,7 +102,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2lnpb")]
+"values": [ExtResource("2_fd0op")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -138,7 +138,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5.885, -1.385)]
+"values": [Vector2(-5.885, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_w6ewj"]
@@ -167,7 +167,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2lnpb")]
+"values": [ExtResource("2_fd0op")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -203,7 +203,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, -5.38)]
+"values": [Vector2(-3.485, 1.1)]
 }
 
 [sub_resource type="Animation" id="Animation_8f2mv"]
@@ -232,7 +232,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2lnpb")]
+"values": [ExtResource("2_fd0op")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -268,7 +268,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, -5.33)]
+"values": [Vector2(-3.485, 1.1)]
 }
 
 [sub_resource type="Animation" id="Animation_ktrrl"]
@@ -297,7 +297,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2lnpb")]
+"values": [ExtResource("2_fd0op")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -333,7 +333,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, -6.265)]
+"values": [Vector2(-3.485, 1.1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2k10"]
@@ -345,10 +345,14 @@ _data = {
 "skeleton_walk_up": SubResource("Animation_ktrrl")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ounei"]
+radius = 11.0454
+
 [node name="Skelly" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_5vdm3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+visible = false
 shape = SubResource("CapsuleShape2D_qra0v")
 
 [node name="PlayerDetection" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
@@ -368,8 +372,8 @@ shape = SubResource("RectangleShape2D_fs4nu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.49616, 1.004)
 scale = Vector2(0.315, 0.315)
-texture = ExtResource("2_2lnpb")
-offset = Vector2(-5.34, -1.85)
+texture = ExtResource("2_fd0op")
+offset = Vector2(-3.485, 0.045)
 hframes = 19
 vframes = 4
 
@@ -379,6 +383,12 @@ libraries = {
 "": SubResource("AnimationLibrary_v2k10")
 }
 speed_scale = 2.0
+
+[node name="enemy_combatbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_combatbox"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ounei")
 
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_entered"]
