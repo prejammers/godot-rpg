@@ -59,6 +59,8 @@ func shoot_projectile():
 
 
 func _on_player_detection_body_entered(body):
+	if not player:
+		roar_sound()
 	player = body
 	player_is_near = true
 	$Timer.start()
@@ -79,3 +81,10 @@ func _on_hurtbox_body_exited(body):
 
 func enemy():
 	pass
+<<<<<<< HEAD
+
+func roar_sound():
+	$RoarSound.pitch_scale = randf_range(0.95, 1.1)
+	$RoarSound.play()
+=======
+>>>>>>> main
