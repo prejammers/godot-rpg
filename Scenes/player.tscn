@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=17 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
-[ext_resource type="AudioStream" uid="uid://cfojesua8kvh3" path="res://Audio/sound_effects/damage.wav" id="4_1n7hj"]
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
 
@@ -625,15 +624,6 @@ shape = SubResource("CircleShape2D_mlvib")
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-<<<<<<< HEAD
-[node name="DamageSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_1n7hj")
-
-[node name="Footsteps" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
-
-=======
->>>>>>> main
 [connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
 [connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]
 [connection signal="body_entered" from="player_combatbox" to="." method="_on_player_combatbox_body_entered"]
