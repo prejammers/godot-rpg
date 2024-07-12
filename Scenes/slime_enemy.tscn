@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsvliup6yeg0e"]
+[gd_scene load_steps=12 format=3 uid="uid://dgidxy672vfu6"]
 
 [ext_resource type="Script" path="res://Scripts/slime_enemy.gd" id="1_gxm2m"]
 [ext_resource type="Texture2D" uid="uid://cqpypw7jqocn2" path="res://Art/enemy/Slime Jump Movement Sprite.png" id="2_wffvi"]

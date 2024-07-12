@@ -64,7 +64,7 @@ func set_hit_cooldown_timer():
 
 func shoot_projectile():
 	$AimToPlayer.look_at(player.global_position)
-	var projectile : CharacterBody2D = projectile_scene.instantiate()
+	var projectile : Node2D = projectile_scene.instantiate()
 	projectile.global_position = self.global_position
 	projectile.rotation_degrees = $AimToPlayer.rotation_degrees
 	get_tree().current_scene.add_child(projectile)

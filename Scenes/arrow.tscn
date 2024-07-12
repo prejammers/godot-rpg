@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwyvt0gsjc05d"]
+[gd_scene load_steps=4 format=3 uid="uid://dt4p7m05tnpy8"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_nb6rq"]
-[ext_resource type="Texture2D" uid="uid://bkkjvjln1ghen" path="res://Art/icon.svg" id="2_kowec"]
+[ext_resource type="Texture2D" uid="uid://dkoifbay1apxb" path="res://Art/projectiles/Projectile Arrow Sprite.png" id="2_ybxle"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fbp7"]
 radius = 2.0
@@ -12,10 +12,10 @@ script = ExtResource("1_nb6rq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(2.08165e-12, 2.08165e-12)
-rotation = 1.5708
-scale = Vector2(0.028, 0.2)
-texture = ExtResource("2_kowec")
+rotation = -1.5708
+scale = Vector2(0.245, 0.46)
+texture = ExtResource("2_ybxle")
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
