@@ -7,7 +7,9 @@ func _ready():
 	
 func _process(delta):
 	position += Vector2.RIGHT.rotated(rotation) * speed * delta
-
+	
+func arrow():
+	pass
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
