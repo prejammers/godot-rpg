@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-[gd_scene load_steps=13 format=3 uid="uid://dqxtq31dy1dok"]
-
-[ext_resource type="Script" path="res://Scripts/bow_enemy.gd" id="1_gv1d2"]
-[ext_resource type="Texture2D" uid="uid://cy52nypacyxvc" path="res://Art/enemy/Arrow Shoot Sprite.png" id="2_useim"]
-[ext_resource type="AudioStream" uid="uid://ryr47flv8hyw" path="res://Audio/sound_effects/bow_shoot.wav" id="3_fs76i"]
-=======
 [gd_scene load_steps=12 format=3 uid="uid://b6j6titgcxl27"]
 
 [ext_resource type="Script" path="res://Scripts/bow_enemy.gd" id="1_gv1d2"]
 [ext_resource type="Texture2D" uid="uid://cy52nypacyxvc" path="res://Art/enemy/Arrow Shoot Sprite.png" id="2_useim"]
->>>>>>> main
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm15e"]
 radius = 3.0
@@ -155,14 +147,6 @@ one_shot = true
 
 [node name="AimToPlayer" type="Node2D" parent="."]
 
-<<<<<<< HEAD
-[node name="ShootSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_fs76i")
-volume_db = -2.0
-pitch_scale = 1.1
-
-=======
->>>>>>> main
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

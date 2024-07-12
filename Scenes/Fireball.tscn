@@ -1,12 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvmul6ndeen4w"]
+[gd_scene load_steps=5 format=3 uid="uid://dvmul6ndeen4w"]
 
 [ext_resource type="Script" path="res://Scripts/Fireball.gd" id="1_hnnd8"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://rlvgv1450x1m" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
-[ext_resource type="AudioStream" uid="uid://nwj7cb6y2sf6" path="res://Audio/sound_effects/fireball.wav" id="3_vf2qd"]
-=======
 [ext_resource type="Texture2D" uid="uid://c6c03b28h7csu" path="res://sprites/particles/dust_particles_01.png" id="2_3sdrg"]
->>>>>>> main
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d2hh"]
 radius = 4.0
@@ -44,11 +39,6 @@ rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nhkl7")
 animation = &"Travel"
 metadata/_edit_lock_ = true
-
-[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_vf2qd")
-volume_db = 3.0
-pitch_scale = 0.95
 
 [connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animatedSprite_animation_finished"]
