@@ -628,6 +628,9 @@ wait_time = 0.5
 [node name="DamageSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1n7hj")
 
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
 [connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
 [connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]
 [connection signal="body_entered" from="player_combatbox" to="." method="_on_player_combatbox_body_entered"]

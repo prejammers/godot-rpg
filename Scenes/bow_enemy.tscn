@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dqxtq31dy1dok"]
 
 [ext_resource type="Script" path="res://Scripts/bow_enemy.gd" id="1_gv1d2"]
-[ext_resource type="Texture2D" path="res://Art/enemy/Arrow Shoot Sprite.png" id="2_useim"]
+[ext_resource type="Texture2D" uid="uid://cy52nypacyxvc" path="res://Art/enemy/Arrow Shoot Sprite.png" id="2_useim"]
 [ext_resource type="AudioStream" uid="uid://ryr47flv8hyw" path="res://Audio/sound_effects/bow_shoot.wav" id="3_fs76i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm15e"]

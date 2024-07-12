@@ -80,6 +80,9 @@ func player_movement(delta):
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
+	
+	if velocity != Vector2.ZERO and not $Footsteps.is_playing():
+		footsteps_sound()
 		
 func play_anim(movement):
 	var dir = current_dir
@@ -148,7 +151,11 @@ func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
 
-
+func footsteps_sound():
+	var index = str(randi() % 3 + 1)
+	$Footsteps.stream = load("res://Audio/sound_effects/player_footstep" + index + ".wav")
+	$Footsteps.pitch_scale = randf_range(0.95, 1.1)
+	$Footsteps.play()
 
 
 
