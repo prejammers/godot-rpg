@@ -24,4 +24,4 @@ shape = SubResource("CapsuleShape2D_3fbp7")
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.2, 0.2)
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
