@@ -624,6 +624,8 @@ shape = SubResource("CircleShape2D_mlvib")
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
+[connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]
 [connection signal="body_entered" from="player_combatbox" to="." method="_on_player_combatbox_body_entered"]
 [connection signal="body_exited" from="player_combatbox" to="." method="_on_player_combatbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

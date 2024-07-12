@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/ranged_enemy.gd" id="1_jy8pw"]
 [ext_resource type="Texture2D" uid="uid://tkkqyddedr41" path="res://Art/enemy/skeletons/Wizard Skeleton Walk.png" id="2_ctivm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm15e"]
-radius = 3.0
-height = 14.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2hg3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aq8v7"]
 radius = 80.0
@@ -110,9 +108,10 @@ _data = {
 script = ExtResource("1_jy8pw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_tm15e")
+shape = SubResource("CircleShape2D_t2hg3")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 

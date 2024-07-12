@@ -76,3 +76,6 @@ func _on_hurtbox_body_entered(body):
 
 func _on_hurtbox_body_exited(body):
 	player_is_colliding = false
+
+func enemy():
+	pass
