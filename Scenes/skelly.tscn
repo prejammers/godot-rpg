@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
 [ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/skeletons/Sword Skeleton Walk.png" id="2_fd0op"]
+<<<<<<< HEAD
 [ext_resource type="AudioStream" uid="uid://bn7xgwgj36ww3" path="res://Audio/sound_effects/monster_roar.wav" id="3_vpkh0"]
+=======
+>>>>>>> main
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0

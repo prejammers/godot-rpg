@@ -81,7 +81,10 @@ func _on_hurtbox_body_exited(body):
 
 func enemy():
 	pass
+<<<<<<< HEAD
 
 func roar_sound():
 	$RoarSound.pitch_scale = randf_range(0.95, 1.1)
 	$RoarSound.play()
+=======
+>>>>>>> main

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uwuk7g2n7sq0"
-path="res://.godot/imported/skelly.png-7c7ad8615a43caebe44b7c38d9bb202c.ctex"
+uid="uid://tkkqyddedr41"
+path="res://.godot/imported/Wizard Skeleton Walk.png-a0e085cebc39f5f219d38fa163c58c7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/enemy/skelly.png"
-dest_files=["res://.godot/imported/skelly.png-7c7ad8615a43caebe44b7c38d9bb202c.ctex"]
+source_file="res://Art/enemy/skeletons/Wizard Skeleton Walk.png"
+dest_files=["res://.godot/imported/Wizard Skeleton Walk.png-a0e085cebc39f5f219d38fa163c58c7c.ctex"]
 
 [params]
 

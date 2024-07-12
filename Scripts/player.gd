@@ -151,6 +151,7 @@ func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
 
+<<<<<<< HEAD
 func footsteps_sound():
 	var index = str(randi() % 3 + 1)
 	$Footsteps.stream = load("res://Audio/sound_effects/player_footstep" + index + ".wav")
@@ -158,4 +159,9 @@ func footsteps_sound():
 	$Footsteps.play()
 
 
+=======
+
+
+
+>>>>>>> main
 
