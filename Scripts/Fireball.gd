@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 var speed = 100
 var hit = false

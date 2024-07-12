@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://do1idqylb3f7q"]
+[gd_scene load_steps=12 format=3 uid="uid://dgidxy672vfu6"]
 
-[ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
-[ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/skeletons/Sword Skeleton Walk.png" id="2_fd0op"]
+[ext_resource type="Script" path="res://Scripts/slime_enemy.gd" id="1_gxm2m"]
+[ext_resource type="Texture2D" uid="uid://cqpypw7jqocn2" path="res://Art/enemy/Slime Jump Movement Sprite.png" id="2_wffvi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fd0op")]
+"values": [ExtResource("2_wffvi")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -49,7 +49,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [25]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -73,12 +73,12 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, 0.045)]
+"values": [Vector2(-3.275, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cnkvq"]
-resource_name = "skeleton_walk_down"
-length = 1.9
+resource_name = "slime_walk_down"
+length = 2.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -87,10 +87,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(18, 0)]
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(18, 0), Vector2i(19, 0), Vector2i(20, 0), Vector2i(21, 0), Vector2i(22, 0), Vector2i(23, 0), Vector2i(24, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,7 +102,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fd0op")]
+"values": [ExtResource("2_wffvi")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -114,7 +114,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [25]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -138,12 +138,12 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5.885, 3)]
+"values": [Vector2(-3.275, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_w6ewj"]
-resource_name = "skeleton_walk_left"
-length = 1.9
+[sub_resource type="Animation" id="Animation_qm7ii"]
+resource_name = "slime_walk_left"
+length = 2.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -152,10 +152,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3), Vector2i(7, 3), Vector2i(8, 3), Vector2i(9, 3), Vector2i(10, 3), Vector2i(11, 3), Vector2i(12, 3), Vector2i(13, 3), Vector2i(14, 3), Vector2i(15, 3), Vector2i(16, 3), Vector2i(17, 3), Vector2i(18, 3)]
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3), Vector2i(7, 3), Vector2i(8, 3), Vector2i(9, 3), Vector2i(10, 3), Vector2i(11, 3), Vector2i(12, 3), Vector2i(13, 3), Vector2i(14, 3), Vector2i(15, 3), Vector2i(16, 3), Vector2i(17, 3), Vector2i(18, 3), Vector2i(19, 3), Vector2i(20, 3), Vector2i(21, 3), Vector2i(22, 3), Vector2i(23, 3), Vector2i(24, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -167,7 +167,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fd0op")]
+"values": [ExtResource("2_wffvi")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -179,7 +179,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [25]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -203,12 +203,12 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, 1.1)]
+"values": [Vector2(-3.275, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_8f2mv"]
-resource_name = "skeleton_walk_right"
-length = 1.9
+[sub_resource type="Animation" id="Animation_m3fxo"]
+resource_name = "slime_walk_right"
+length = 2.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -217,10 +217,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(8, 1), Vector2i(9, 1), Vector2i(10, 1), Vector2i(11, 1), Vector2i(12, 1), Vector2i(13, 1), Vector2i(14, 1), Vector2i(15, 1), Vector2i(16, 1), Vector2i(17, 1), Vector2i(18, 1)]
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1), Vector2i(8, 1), Vector2i(9, 1), Vector2i(10, 1), Vector2i(11, 1), Vector2i(12, 1), Vector2i(13, 1), Vector2i(14, 1), Vector2i(15, 1), Vector2i(16, 1), Vector2i(17, 1), Vector2i(18, 1), Vector2i(19, 1), Vector2i(20, 1), Vector2i(21, 1), Vector2i(22, 1), Vector2i(23, 1), Vector2i(24, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -232,7 +232,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fd0op")]
+"values": [ExtResource("2_wffvi")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -244,7 +244,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [25]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -268,12 +268,12 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, 1.1)]
+"values": [Vector2(-3.275, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ktrrl"]
-resource_name = "skeleton_walk_up"
-length = 1.9
+[sub_resource type="Animation" id="Animation_qvbhd"]
+resource_name = "slime_walk_up"
+length = 2.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -282,10 +282,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2), Vector2i(7, 2), Vector2i(8, 2), Vector2i(9, 2), Vector2i(10, 2), Vector2i(11, 2), Vector2i(12, 2), Vector2i(13, 2), Vector2i(14, 2), Vector2i(15, 2), Vector2i(16, 2), Vector2i(17, 2), Vector2i(18, 2)]
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2), Vector2i(7, 2), Vector2i(8, 2), Vector2i(9, 2), Vector2i(10, 2), Vector2i(11, 2), Vector2i(12, 2), Vector2i(13, 2), Vector2i(14, 2), Vector2i(15, 2), Vector2i(16, 2), Vector2i(17, 2), Vector2i(18, 2), Vector2i(19, 2), Vector2i(20, 2), Vector2i(21, 2), Vector2i(22, 2), Vector2i(23, 2), Vector2i(24, 2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -297,7 +297,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fd0op")]
+"values": [ExtResource("2_wffvi")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -309,7 +309,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [25]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -333,26 +333,22 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3.485, 1.1)]
+"values": [Vector2(-3.275, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2k10"]
 _data = {
 "RESET": SubResource("Animation_6khon"),
-"skeleton_walk_down": SubResource("Animation_cnkvq"),
-"skeleton_walk_left": SubResource("Animation_w6ewj"),
-"skeleton_walk_right": SubResource("Animation_8f2mv"),
-"skeleton_walk_up": SubResource("Animation_ktrrl")
+"slime_walk_down": SubResource("Animation_cnkvq"),
+"slime_walk_left": SubResource("Animation_qm7ii"),
+"slime_walk_right": SubResource("Animation_m3fxo"),
+"slime_walk_up": SubResource("Animation_qvbhd")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ounei"]
-radius = 11.0454
-
-[node name="Skelly" type="CharacterBody2D" groups=["Enemy"]]
-script = ExtResource("1_5vdm3")
+[node name="slime_enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_gxm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
-visible = false
 shape = SubResource("CapsuleShape2D_qra0v")
 
 [node name="PlayerDetection" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
@@ -372,23 +368,17 @@ shape = SubResource("RectangleShape2D_fs4nu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.49616, 1.004)
 scale = Vector2(0.315, 0.315)
-texture = ExtResource("2_fd0op")
-offset = Vector2(-3.485, 0.045)
-hframes = 19
+texture = ExtResource("2_wffvi")
+offset = Vector2(-3.275, 0)
+hframes = 25
 vframes = 4
 
-[node name="SkeletonAnimation" type="AnimationPlayer" parent="."]
+[node name="SlimeAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_v2k10")
 }
 speed_scale = 2.0
-
-[node name="enemy_combatbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_combatbox"]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_ounei")
 
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_entered"]

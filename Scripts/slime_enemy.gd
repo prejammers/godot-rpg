@@ -18,29 +18,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	#if player_colliding == true and hit_cooldown == false:
-		#player.cur_hp = player.cur_hp - 1
-		#print(player.cur_hp)
-		#hit_cooldown = true
-		#start_timer()
+	if player_colliding == true and hit_cooldown == false:
+		player.cur_hp = player.cur_hp - 1
+		print(player.cur_hp)
+		hit_cooldown = true
+		start_timer()
 		
 	if player_chase:
 		var target_position = player.position
 		direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
-		#print(direction)
+		print(direction)
 		if direction.y > 0: #move down
 			#if direction.y * 1 > direction.x * 1:
-				$SkeletonAnimation.play("skeleton_walk_down")
+				$SlimeAnimation.play("slime_walk_down")
 		elif direction.y < 0: #move up
-				$SkeletonAnimation.play("skeleton_walk_up")  
+				$SlimeAnimation.play("slime_walk_up")  
 		if direction.x > 0: #move right
 			if direction.x * 1 > direction.y * 1:
-				$SkeletonAnimation.play("skeleton_walk_right")
+				$SlimeAnimation.play("slime_walk_right")
 		elif direction.x < 0: #move left
 			if direction.x * 1 < direction.y * 1:
-				$SkeletonAnimation.play("skeleton_walk_left") 
+				$SlimeAnimation.play("slime_walk_left") 
 
 
 

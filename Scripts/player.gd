@@ -124,14 +124,30 @@ func _on_player_combatbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_in_attack_range = false
 		
+func _on_player_combatbox_area_entered(area):
+	if area.has_method("arrow"):
+		enemy_in_attack_range = true
+		
+func _on_player_combatbox_area_exited(area):
+	if area.has_method("arrow"):
+		#how to do damage on contact?
+		enemy_in_attack_range = false
+		
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
 		cur_hp -= 2
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print("Player's health is %s" % [str(cur_hp)])
-		$DamageSound.play()
 		
+
+
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+
+
+
+
+
+
