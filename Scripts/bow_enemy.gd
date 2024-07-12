@@ -68,7 +68,10 @@ func shoot_projectile():
 	projectile.global_position = self.global_position
 	projectile.rotation_degrees = $AimToPlayer.rotation_degrees
 	get_tree().current_scene.add_child(projectile)
+	$ShootSound.pitch_scale = 1.25 - (0.002 * global_position.distance_to(player.global_position))
+	$ShootSound.play()
 	is_shooting = false
+	
 
 
 func _on_player_detection_body_entered(body):

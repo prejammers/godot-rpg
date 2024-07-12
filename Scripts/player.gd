@@ -138,6 +138,7 @@ func enemy_attack():
 		cur_hp -= 2
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
+		$DamageSound.play()
 		print("Player's health is %s" % [str(cur_hp)])
 		
 
