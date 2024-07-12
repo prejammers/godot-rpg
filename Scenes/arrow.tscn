@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwyvt0gsjc05d"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_nb6rq"]
-[ext_resource type="Texture2D" uid="uid://bkkjvjln1ghen" path="res://Art/icon.svg" id="2_kowec"]
+[ext_resource type="Texture2D" uid="uid://dkoifbay1apxb" path="res://Art/projectiles/Projectile Arrow Sprite.png" id="2_ybxle"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fbp7"]
 radius = 2.0
@@ -11,18 +11,17 @@ height = 26.0
 script = ExtResource("1_nb6rq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(2.08165e-12, 2.08165e-12)
-rotation = 1.5708
-scale = Vector2(0.028, 0.2)
-texture = ExtResource("2_kowec")
+rotation = -1.5708
+scale = Vector2(0.245, 0.46)
+texture = ExtResource("2_ybxle")
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3fbp7")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.2, 0.2)
 
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

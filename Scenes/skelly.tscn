@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
-[ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/Sword Skeleton Walk.png" id="2_fd0op"]
+[ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/skeletons/Sword Skeleton Walk.png" id="2_fd0op"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
