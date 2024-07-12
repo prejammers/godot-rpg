@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://do1idqylb3f7q"]
+[gd_scene load_steps=14 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
 [ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/skeletons/Sword Skeleton Walk.png" id="2_fd0op"]
+[ext_resource type="AudioStream" uid="uid://bn7xgwgj36ww3" path="res://Audio/sound_effects/monster_roar.wav" id="3_vpkh0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -389,6 +390,10 @@ speed_scale = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_combatbox"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ounei")
+
+[node name="RoarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vpkh0")
+volume_db = -2.0
 
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_entered"]

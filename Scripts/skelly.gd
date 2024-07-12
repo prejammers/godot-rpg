@@ -50,6 +50,9 @@ func start_timer():
 		hit_cooldown = false
 		
 func _on_player_detection_body_entered(body):
+	if not player:
+		$RoarSound.pitch_scale = randf_range(0.95, 1.1)
+		$RoarSound.play()
 	player = body
 	player_chase = true
 func _on_player_detection_body_exited(body):

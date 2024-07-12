@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3uj6p23o8dg5"]
+[gd_scene load_steps=13 format=3 uid="uid://d3uj6p23o8dg5"]
 
 [ext_resource type="Script" path="res://Scripts/ranged_enemy.gd" id="1_jy8pw"]
 [ext_resource type="Texture2D" uid="uid://tkkqyddedr41" path="res://Art/enemy/skeletons/Wizard Skeleton Walk.png" id="2_ctivm"]
+[ext_resource type="AudioStream" uid="uid://bn7xgwgj36ww3" path="res://Audio/sound_effects/monster_roar.wav" id="3_mhmsh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2hg3"]
 
@@ -144,6 +145,10 @@ speed_scale = 2.0
 one_shot = true
 
 [node name="AimToPlayer" type="Node2D" parent="."]
+
+[node name="RoarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mhmsh")
+volume_db = -2.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
