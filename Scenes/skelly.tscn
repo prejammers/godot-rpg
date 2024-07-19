@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://do1idqylb3f7q"]
+[gd_scene load_steps=17 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
 [ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/skeletons/Sword Skeleton Walk.png" id="2_fd0op"]
+[ext_resource type="Texture2D" uid="uid://chx4qy5wy4vvh" path="res://Art/Tileset/Shadow enemy particle.png" id="3_7y7a6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -348,6 +349,19 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ounei"]
 radius = 11.0454
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r73xx"]
+particles_animation = true
+particles_anim_h_frames = 20
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1s7xi"]
+_data = [Vector2(0.0310078, 0.207317), 0.0, 0.0, 0, 0, Vector2(0.531008, 0.246951), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_vg2ga"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
 [node name="Skelly" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_5vdm3")
 
@@ -389,6 +403,23 @@ speed_scale = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_combatbox"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ounei")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_r73xx")
+amount = 20
+texture = ExtResource("3_7y7a6")
+emission_shape = 3
+emission_rect_extents = Vector2(5.005, -6.47)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 21.58
+initial_velocity_max = 21.59
+damping_max = 16.547
+scale_amount_min = 0.1
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_1s7xi")
+color_ramp = SubResource("Gradient_vg2ga")
+anim_speed_max = 0.3
 
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_entered"]

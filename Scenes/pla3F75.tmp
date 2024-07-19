@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=22 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
-[ext_resource type="Texture2D" uid="uid://chx4qy5wy4vvh" path="res://Art/Tileset/Shadow enemy particle.png" id="4_8pcru"]
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
+[ext_resource type="Texture2D" uid="uid://donx3ckt51dal" path="res://Art/Tileset/Run Trail.png" id="4_lhdkp"]
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
+[ext_resource type="Script" path="res://Scenes/Trail.gd" id="5_xn7dh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
 radius = 7.0
@@ -528,20 +529,19 @@ func _process(delta):
 [sub_resource type="CircleShape2D" id="CircleShape2D_mlvib"]
 radius = 14.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pi311"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 20
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
 [sub_resource type="Curve" id="Curve_bn8j3"]
-_data = [Vector2(0, 0.192742), 0.0, 0.0, 0, 0, Vector2(0.403101, 0.287097), 0.0, 0.0, 0, 0, Vector2(0.647287, 0), -1.34442, 0.0, 0, 0]
+_data = [Vector2(0, 0.192742), 0.0, 0.0, 0, 0, Vector2(0.523256, 0.308065), 0.0, 0.0, 0, 0, Vector2(0.81783, 0), -1.34442, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_e4jdn"]
-interpolation_mode = 1
-colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_n847c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_al8b1"]
+colors = PackedColorArray(0.748377, 0.166401, 0.80753, 1, 1, 1, 1, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
@@ -589,18 +589,23 @@ shape = SubResource("CircleShape2D_mlvib")
 wait_time = 0.5
 
 [node name="ParticlesMove" type="CPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_pi311")
 position = Vector2(4.19, 7.92)
 amount = 10
-texture = ExtResource("4_8pcru")
+texture = ExtResource("4_lhdkp")
 spread = 41.12
 gravity = Vector2(0, 0)
 initial_velocity_min = 9.06
-initial_velocity_max = 16.26
+initial_velocity_max = 37.84
+damping_max = 14.388
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_bn8j3")
 color_ramp = SubResource("Gradient_e4jdn")
+
+[node name="Trail" type="Line2D" parent="."]
+width_curve = SubResource("Curve_n847c")
+gradient = SubResource("Gradient_al8b1")
+script = ExtResource("5_xn7dh")
 
 [connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
 [connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]

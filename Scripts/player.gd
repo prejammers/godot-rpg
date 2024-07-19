@@ -61,25 +61,38 @@ func player_movement(delta):
 		play_anim(1)
 		velocity.x = SPEED
 		velocity.y = 0
+		$ParticlesMove.emitting = true
+		$ParticlesMove.position.x = -5
+		$ParticlesMove.position.y = 0
 	elif Input.is_action_pressed("left"):
 		current_dir = "left"
 		play_anim(1)
 		velocity.x = -SPEED
 		velocity.y = 0
+		$ParticlesMove.emitting = true
+		$ParticlesMove.position.x = 5
+		$ParticlesMove.position.y = 0
 	elif Input.is_action_pressed("down"):
 		current_dir = "down"
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = SPEED
+		$ParticlesMove.emitting = true
+		$ParticlesMove.position.x = 2
+		$ParticlesMove.position.y = -5
 	elif Input.is_action_pressed("up"):
 		current_dir = "up"
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = -SPEED
+		$ParticlesMove.emitting = true 
+		$ParticlesMove.position.x = 2
+		$ParticlesMove.position.y = 5
 	else:
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
+		$ParticlesMove.emitting = false
 		
 func play_anim(movement):
 	var dir = current_dir
