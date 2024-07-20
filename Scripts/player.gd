@@ -154,7 +154,10 @@ func enemy_attack():
 		print("Player's health is %s" % [str(cur_hp)])
 		
 
-
+func music(delta):
+	if $AudioStreamPlayer.playing == false: 
+		$AudioStreamPlayer.play = true
+		
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true

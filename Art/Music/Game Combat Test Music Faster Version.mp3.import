@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://t16v6q5bhjqu"
+path="res://.godot/imported/Game Combat Test Music Faster Version.mp3-ab29523bd69c88289fb737db3816e7be.mp3str"
+
+[deps]
+
+source_file="res://Art/Music/Game Combat Test Music Faster Version.mp3"
+dest_files=["res://.godot/imported/Game Combat Test Music Faster Version.mp3-ab29523bd69c88289fb737db3816e7be.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

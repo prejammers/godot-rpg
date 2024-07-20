@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb61nyye3vii3"]
+[gd_scene load_steps=14 format=3 uid="uid://cb61nyye3vii3"]
 
 [ext_resource type="Texture2D" uid="uid://dvkwpwphq8xmc" path="res://sprites/tilesets/grass.png" id="1_n8lyq"]
 [ext_resource type="Texture2D" uid="uid://kaien6w5e3dq" path="res://sprites/tilesets/plains.png" id="2_1fo2a"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3uj6p23o8dg5" path="res://Scenes/ranged_enemy.tscn" id="6_xtopl"]
 [ext_resource type="PackedScene" uid="uid://b6j6titgcxl27" path="res://Scenes/bow_enemy.tscn" id="7_vfkvc"]
 [ext_resource type="PackedScene" uid="uid://dgidxy672vfu6" path="res://Scenes/slime_enemy.tscn" id="8_0csme"]
+[ext_resource type="AudioStream" uid="uid://t16v6q5bhjqu" path="res://Art/Music/Game Combat Test Music Faster Version.mp3" id="9_qfpqe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dn6c4"]
 texture = ExtResource("1_n8lyq")
@@ -846,3 +847,8 @@ position = Vector2(274, 186)
 
 [node name="slime_enemy" parent="." instance=ExtResource("8_0csme")]
 position = Vector2(497, 306)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qfpqe")
+volume_db = -20.0
+autoplay = true
