@@ -1,10 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://do1idqylb3f7q"]
+[gd_scene load_steps=23 format=3 uid="uid://do1idqylb3f7q"]
 
 [ext_resource type="Script" path="res://Scripts/skelly.gd" id="1_5vdm3"]
 [ext_resource type="Texture2D" uid="uid://covm75igyol4" path="res://Art/enemy/skeletons/Sword Skeleton Walk.png" id="2_fd0op"]
 [ext_resource type="Texture2D" uid="uid://dghk3utj0v0mr" path="res://Art/enemy/Explosion Animation.png" id="3_6jiky"]
 [ext_resource type="Texture2D" uid="uid://chx4qy5wy4vvh" path="res://Art/Tileset/Shadow enemy particle.png" id="3_7y7a6"]
 [ext_resource type="AudioStream" uid="uid://dpbdbu1vywgmn" path="res://Art/enemy/explosion.wav" id="5_ancjm"]
+[ext_resource type="Texture2D" uid="uid://cf0qtvnbopi52" path="res://Art/enemy/Health bar/Empty Enemy Health Bar.png" id="6_n157s"]
+[ext_resource type="Texture2D" uid="uid://7gccellb2ypg" path="res://Art/enemy/Health bar/Outline of Enemy Health Bar.png" id="7_e4dvh"]
+[ext_resource type="Texture2D" uid="uid://d2y182gl1pulk" path="res://Art/enemy/Health bar/Red Enemy Health Bar.png" id="8_cnfeq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -478,6 +481,18 @@ anim_speed_max = 0.3
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ancjm")
 volume_db = -20.0
+
+[node name="EntityHealthBar" type="TextureProgressBar" parent="." groups=["Healthbar"]]
+offset_left = -10.0
+offset_top = -14.0
+offset_right = 290.0
+offset_bottom = 146.0
+scale = Vector2(0.06, 0.06)
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("6_n157s")
+texture_over = ExtResource("7_e4dvh")
+texture_progress = ExtResource("8_cnfeq")
 
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_body_entered"]

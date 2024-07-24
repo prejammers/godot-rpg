@@ -8,6 +8,7 @@ var player_colliding: bool = false
 var hit_cooldown:bool = false
 var dead = false
 var direction = null
+@onready var healthBar = $EntityHealthBar
 @onready var death_sound = $Explosion 
 
 
@@ -92,6 +93,7 @@ func _on_enemy_combatbox_area_entered(area):
 	if area.has_method("fireball_deal_damage"):
 		damage = 5
 		take_damage(damage)
+		healthBar.value = health
 	pass # Replace with function body.
 
 func take_damage(damage):
@@ -106,6 +108,7 @@ func take_damage(damage):
 
 func death():
 	dead = true
+	var player_chase = false
 	var SPEED = 0
 	var tween = create_tween()
 	death_sound.play()

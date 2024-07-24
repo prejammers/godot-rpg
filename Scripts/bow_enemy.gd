@@ -10,7 +10,7 @@ var is_shooting := false
 var player_chase = false
 var direction = null
 var dead = false
-@onready var death_sound = load("res://Art/enemy/explosion.wav")
+@onready var death_sound = $Explosion 
 @onready var projectile_scene = load("res://Scenes/arrow.tscn")
 
 
@@ -20,8 +20,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	if health <= 0:
-		queue_free()
 	#if player_is_colliding == true and hit_cooldown == false:
 		#player.cur_hp = player.cur_hp - 1
 		#hit_cooldown = true
@@ -113,12 +111,14 @@ func take_damage(damage):
 		
 
 func death():
+	is_shooting = false
+	player_is_near = false
 	dead = true
 	var SPEED = 0
 	var tween = create_tween()
 	death_sound.play()
 	get_node("CollisionShape2D").disabled = true 
-	$CPUParticles2D.emitting = false
+	#$CPUParticles2D.emitting = false
 	$BowAnimation.play("death_animation")
 	player_chase = false
 	tween.tween_property($Sprite2D, "scale", Vector2(3,3), 1.5)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6j6titgcxl27"]
+[gd_scene load_steps=15 format=3 uid="uid://b6j6titgcxl27"]
 
 [ext_resource type="Script" path="res://Scripts/bow_enemy.gd" id="1_gv1d2"]
 [ext_resource type="Texture2D" uid="uid://dghk3utj0v0mr" path="res://Art/enemy/Explosion Animation.png" id="2_onng2"]
 [ext_resource type="Texture2D" uid="uid://cy52nypacyxvc" path="res://Art/enemy/Arrow Shoot Sprite.png" id="2_useim"]
+[ext_resource type="AudioStream" uid="uid://dpbdbu1vywgmn" path="res://Art/enemy/explosion.wav" id="4_mfoki"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tm15e"]
 radius = 3.0
@@ -379,6 +380,10 @@ speed_scale = 3.0
 one_shot = true
 
 [node name="AimToPlayer" type="Node2D" parent="."]
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mfoki")
+volume_db = -20.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
