@@ -6,9 +6,8 @@ var player_chase = false
 var player = null
 var player_colliding: bool = false
 var hit_cooldown:bool = false
-
 var direction = null
-
+var dead = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +17,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if health <= 0:
+		queue_free()
+		
 	if player_colliding == true and hit_cooldown == false:
 		player.cur_hp = player.cur_hp - 1
 		print(player.cur_hp)
@@ -29,7 +31,7 @@ func _physics_process(delta):
 		direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
-		print(direction)
+		#print(direction)
 		if direction.y > 0: #move down
 			#if direction.y * 1 > direction.x * 1:
 				$SlimeAnimation.play("slime_walk_down")
@@ -69,6 +71,13 @@ func _on_player_collision_body_exited(body):
 func enemy():
 	pass
 
+func _on_player_collision_2_area_entered(area):
+	if area.is_in_group("fireball"):
+		health -= 3.5
+		print(health)
+	pass # Replace with function body.
+	
 #func AnimationLoop():
 	#animation = anim_mode + "_" + anim_direction
 	#get_node ("AnimationPlayer").play(animation)
+

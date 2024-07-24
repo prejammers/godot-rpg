@@ -8,6 +8,7 @@ var hit_cooldown := false
 var is_shooting := false
 var player_chase = false
 var direction = null
+var dead = false
 
 @onready var projectile_scene = load("res://Scenes/enemy_fireball.tscn")
 

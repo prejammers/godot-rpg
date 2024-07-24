@@ -139,7 +139,11 @@ func _on_player_combatbox_body_exited(body):
 		
 func _on_player_combatbox_area_entered(area):
 	if area.has_method("arrow"):
-		enemy_in_attack_range = true
+		cur_hp -= 2
+		$attack_cooldown.start()
+		print("Player's health is %s" % [str(cur_hp)])
+	#if area.is_in_group("fireball"):
+		#pass
 		
 func _on_player_combatbox_area_exited(area):
 	if area.has_method("arrow"):
@@ -161,6 +165,7 @@ func music(delta):
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+
 
 
 

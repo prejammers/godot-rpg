@@ -580,6 +580,7 @@ position = Vector2(-7, 5)
 script = SubResource("GDScript_tlgsq")
 
 [node name="player_combatbox" type="Area2D" parent="."]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_combatbox"]
 position = Vector2(-8, 2)
