@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 30
-var health = 15
+var SPEED = 30
+var health = 20
 var player = null
 var player_is_near := false
 var player_is_colliding := false
@@ -10,6 +10,7 @@ var is_shooting := false
 var player_chase = false
 var direction = null
 var dead = false
+@onready var healthBar = $EntityHealthBar
 @onready var death_sound = $Explosion 
 @onready var projectile_scene = load("res://Scenes/arrow.tscn")
 
@@ -49,11 +50,11 @@ func _physics_process(delta):
 		shoot_projectile()
 	
 	# Enemy will move only if player is too far
-	if player and not player_is_near:
-		var target_position = player.position
-		var direction = (target_position - self.position).normalized()
-		var velocity = direction * SPEED
-		move_and_collide(velocity * delta)
+	#if player and not player_is_near:
+		#var target_position = player.position
+		#var direction = (target_position - self.position).normalized()
+		#var velocity = direction * SPEED
+		#move_and_collide(velocity * delta)
 		
 	
 	
@@ -98,6 +99,7 @@ func _on_hurtbox_area_entered(area):
 	if area.has_method("fireball_deal_damage"):
 		damage = 5
 		take_damage(damage)
+		healthBar.value = health
 	pass # Replace with function body.
 
 func take_damage(damage):
@@ -114,13 +116,13 @@ func death():
 	is_shooting = false
 	player_is_near = false
 	dead = true
-	var SPEED = 0
+	SPEED = 0
 	var tween = create_tween()
 	death_sound.play()
 	get_node("CollisionShape2D").disabled = true 
 	#$CPUParticles2D.emitting = false
 	$BowAnimation.play("death_animation")
 	player_chase = false
-	tween.tween_property($Sprite2D, "scale", Vector2(3,3), 1.5)
+	#tween.tween_property($Sprite2D, "scale", Vector2(3,3), 1.5)
 	await get_tree().create_timer(2).timeout
 	queue_free()

@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-const SPEED = 40
-var health = 10
-var player_chase = false
-var player = null
+var SPEED = 40
+var health = 50
+var player_chase = true
 var player_colliding: bool = false
 var hit_cooldown:bool = false
 var direction = null
 var dead = false
-
+@onready var healthBar = $EntityHealthBar
+@onready var death_sound = $Explosion 
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,14 +22,14 @@ func _physics_process(delta):
 		queue_free()
 		
 	if player_colliding == true and hit_cooldown == false:
-		player.cur_hp = player.cur_hp - 1
-		print(player.cur_hp)
+		
+		
 		hit_cooldown = true
 		start_timer()
 		
 	if player_chase:
 		var target_position = player.position
-		direction = (target_position - position).normalized()
+		var direction = global_position.direction_to(player.global_position)
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
 		#print(direction)

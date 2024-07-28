@@ -1,22 +1,21 @@
 extends CharacterBody2D
 
-const SPEED = 40
+var SPEED = 40
 var health = 10
-var player_chase = false
-var player = null
+var player_chase = true
 var player_colliding: bool = false
 var hit_cooldown:bool = false
 var dead = false
 var direction = null
 @onready var healthBar = $EntityHealthBar
 @onready var death_sound = $Explosion 
-
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CPUParticles2D.emitting = true
-	modulate = Color.WHITE
+	#$CPUParticles2D.emitting = true
+	#modulate = Color.WHITE
 	pass # Replace with function body.
 
 
@@ -32,7 +31,8 @@ func _physics_process(delta):
 		
 	if player_chase:
 		var target_position = player.position
-		direction = (target_position - position).normalized()
+		var direction = global_position.direction_to(player.global_position)
+		#direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
 		#print(direction)
@@ -108,8 +108,8 @@ func take_damage(damage):
 
 func death():
 	dead = true
-	var player_chase = false
-	var SPEED = 0
+	player_chase = false
+	SPEED = 0
 	var tween = create_tween()
 	death_sound.play()
 	get_node("CollisionShape2D").disabled = true 
@@ -117,5 +117,5 @@ func death():
 	$SkeletonAnimation.play("death_animation")
 	player_chase = false
 	tween.tween_property($Sprite2D, "scale", Vector2(3,3), 1.5)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(.7).timeout
 	queue_free()

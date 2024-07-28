@@ -284,13 +284,15 @@ point_count = 3
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="enemy_fireball" type="Area2D" groups=["arrow"]]
-light_mask = 4
-visibility_layer = 4
+light_mask = 0
+visibility_layer = 2
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_s6s83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 2
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_xw1hu")
 

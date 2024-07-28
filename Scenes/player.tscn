@@ -1,9 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=23 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
 [ext_resource type="Texture2D" uid="uid://chx4qy5wy4vvh" path="res://Art/Tileset/Shadow enemy particle.png" id="4_8pcru"]
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
+[ext_resource type="Texture2D" uid="uid://cf0qtvnbopi52" path="res://Art/enemy/Health bar/Empty Enemy Health Bar.png" id="5_bh1wh"]
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
+[ext_resource type="Texture2D" uid="uid://cauxhmpsja4of" path="res://Art/enemy/Health bar/Outline of Player Health Bar.png" id="6_na6vs"]
+[ext_resource type="Texture2D" uid="uid://cat2sskx2htkt" path="res://Art/enemy/Health bar/Player Health Bar.png" id="7_okffo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
 radius = 7.0
@@ -554,10 +557,6 @@ shape = SubResource("CircleShape2D_1hgcr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-limit_left = 67
-limit_top = -1
-limit_right = 817
-limit_bottom = 455
 position_smoothing_enabled = true
 
 [node name="Character Sprite" type="Sprite2D" parent="."]
@@ -602,6 +601,18 @@ scale_amount_min = 0.5
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_bn8j3")
 color_ramp = SubResource("Gradient_e4jdn")
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="." groups=["Healthbar"]]
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 288.0
+offset_bottom = 144.0
+scale = Vector2(0.085, 0.085)
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("5_bh1wh")
+texture_over = ExtResource("6_na6vs")
+texture_progress = ExtResource("7_okffo")
 
 [connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
 [connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]

@@ -6,14 +6,17 @@ var enemy_attack_cooldown = true
 var max_hp = 10
 var cur_hp = 10
 var player_alive = true
+@onready var healthBar = $PlayerHealthBar
 
 const FireBall = preload("res://Scenes/Fireball.tscn")
-
+const IceWall = preload("res://Scenes/IceWall.tscn")
 var current_dir = "none"
-const SPEED = 150
+const SPEED = 100
 
 var shoot_cooldown: bool = false
-
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit() #exits the game when pressing escape
 
 func _ready():
 	$PlayerAnimation.play("idle_down")
@@ -49,10 +52,20 @@ func Shoot():
 		fireball.global_transform = $Aim.global_transform
 		start_timer()
 		
-	
+func ice_Wall():
+	if not shoot_cooldown:
+		shoot_cooldown = true
+		var icewall = IceWall.instantiate()
+		get_parent().add_child(icewall)
+		icewall.position = $Aim.get_global_mouse_position()
+		start_timer()
+		
 func player_movement(delta):
 	if Input.is_action_pressed("fire") and shoot_cooldown == false:
 		Shoot()
+		
+	if Input.is_action_pressed("IceWall") and shoot_cooldown == false:
+		ice_Wall()
 		
 	if Input.is_action_pressed("alt_fire"):
 		pass
@@ -138,8 +151,9 @@ func _on_player_combatbox_body_exited(body):
 		enemy_in_attack_range = false
 		
 func _on_player_combatbox_area_entered(area):
-	if area.has_method("arrow"):
+	if area.has_method("arrow") == true:
 		cur_hp -= 2
+		healthBar.value = cur_hp
 		$attack_cooldown.start()
 		print("Player's health is %s" % [str(cur_hp)])
 	#if area.is_in_group("fireball"):
@@ -153,6 +167,7 @@ func _on_player_combatbox_area_exited(area):
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
 		cur_hp -= 2
+		healthBar.value = cur_hp
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print("Player's health is %s" % [str(cur_hp)])

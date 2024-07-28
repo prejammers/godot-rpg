@@ -1,7 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgidxy672vfu6"]
+[gd_scene load_steps=16 format=3 uid="uid://dgidxy672vfu6"]
 
 [ext_resource type="Script" path="res://Scripts/slime_enemy.gd" id="1_gxm2m"]
 [ext_resource type="Texture2D" uid="uid://cqpypw7jqocn2" path="res://Art/enemy/Slime Jump Movement Sprite.png" id="2_wffvi"]
+[ext_resource type="AudioStream" uid="uid://dpbdbu1vywgmn" path="res://Art/enemy/explosion.wav" id="3_rmwi4"]
+[ext_resource type="Texture2D" uid="uid://cf0qtvnbopi52" path="res://Art/enemy/Health bar/Empty Enemy Health Bar.png" id="4_0yqow"]
+[ext_resource type="Texture2D" uid="uid://7gccellb2ypg" path="res://Art/enemy/Health bar/Outline of Enemy Health Bar.png" id="5_58fs7"]
+[ext_resource type="Texture2D" uid="uid://d2y182gl1pulk" path="res://Art/enemy/Health bar/Red Enemy Health Bar.png" id="6_am55o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qra0v"]
 radius = 8.0
@@ -346,20 +350,22 @@ _data = {
 }
 
 [node name="slime_enemy" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(2.645, 2.645)
 script = ExtResource("1_gxm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+visibility_layer = 0
 shape = SubResource("CapsuleShape2D_qra0v")
 
 [node name="PlayerDetection" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerDetection"]
 shape = SubResource("CircleShape2D_i66n7")
 
 [node name="PlayerCollision2" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerCollision2" groups=["Enemy"]]
@@ -379,6 +385,22 @@ libraries = {
 "": SubResource("AnimationLibrary_v2k10")
 }
 speed_scale = 2.0
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rmwi4")
+volume_db = -20.0
+
+[node name="EntityHealthBar" type="TextureProgressBar" parent="." groups=["Healthbar"]]
+offset_left = -10.0
+offset_top = -14.0
+offset_right = 290.0
+offset_bottom = 146.0
+scale = Vector2(0.06, 0.06)
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("4_0yqow")
+texture_over = ExtResource("5_58fs7")
+texture_progress = ExtResource("6_am55o")
 
 [connection signal="body_entered" from="CollisionShape2D/PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="area_entered" from="CollisionShape2D/PlayerCollision2" to="." method="_on_player_collision_2_area_entered"]

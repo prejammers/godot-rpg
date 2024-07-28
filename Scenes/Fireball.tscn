@@ -206,9 +206,11 @@ animations = [{
 }]
 
 [node name="Fireball" type="Area2D" groups=["fireball"]]
+collision_mask = 3
 script = ExtResource("1_hnnd8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 3
 position = Vector2(8, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e3jxr")
@@ -230,7 +232,7 @@ stream = ExtResource("5_watf4")
 volume_db = 3.0
 pitch_scale = 1.34
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_entered" from="." to="." method="_on_FireBall_area_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animatedSprite_animation_finished"]
