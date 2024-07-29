@@ -1,13 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwyvt0gsjc05d"]
+[gd_scene load_steps=8 format=3 uid="uid://bwyvt0gsjc05d"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_nb6rq"]
 [ext_resource type="Texture2D" uid="uid://dkoifbay1apxb" path="res://Art/projectiles/Projectile Arrow Sprite.png" id="2_ybxle"]
+[ext_resource type="Texture2D" uid="uid://dhah8sownmmni" path="res://Art/projectiles/Fire Ball.png" id="3_0fyqd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fbp7"]
 radius = 2.0
 height = 26.0
 
-[node name="Arrow" type="Area2D"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gxuco"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_wxqel"]
+_data = [Vector2(0.0310078, 0.207317), 0.0, 0.0, 0, 0, Vector2(0.554264, 0.266129), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_qnk1t"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Arrow" type="Area2D" groups=["arrow"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_nb6rq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,7 +32,9 @@ scale = Vector2(0.245, 0.46)
 texture = ExtResource("2_ybxle")
 vframes = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["arrow"]]
+light_mask = 3
+visibility_layer = 3
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3fbp7")
 
@@ -24,4 +42,26 @@ shape = SubResource("CapsuleShape2D_3fbp7")
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.2, 0.2)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_gxuco")
+position = Vector2(-11.7, 0)
+amount = 20
+texture = ExtResource("3_0fyqd")
+emission_shape = 3
+emission_rect_extents = Vector2(1, -0.075)
+direction = Vector2(-1, 0)
+spread = 15.22
+gravity = Vector2(0, 0)
+initial_velocity_max = 35.97
+damping_max = 100.0
+scale_amount_min = 0.0
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_wxqel")
+color = Color(0.436738, 0.000822073, 0.572918, 1)
+color_ramp = SubResource("Gradient_qnk1t")
+anim_speed_max = 0.3
+anim_offset_min = 0.721
+anim_offset_max = 0.73
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -6,17 +6,28 @@ var enemy_attack_cooldown = true
 var max_hp = 10
 var cur_hp = 10
 var player_alive = true
-
+@onready var healthBar = $PlayerHealthBar
 const FireBall = preload("res://Scenes/Fireball.tscn")
-
+const IceWall = preload("res://Scenes/IceWall.tscn")
 var current_dir = "none"
-const SPEED = 150
+const SPEED = 100
+
+var experience = 0
+var experience_level = 1
+var collected_experience = 0
+
+#GUI
+@onready var expBar = get_node("GUILayer/GUI/ExperienceBar") 
+@onready var lblLevel = get_node("GUILayer/GUI/ExperienceBar/lbl_level")
 
 var shoot_cooldown: bool = false
-
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit() #exits the game when pressing escape
 
 func _ready():
 	$PlayerAnimation.play("idle_down")
+	set_expbar(experience, calculate_experiencecap())
 	
 func _process(delta):
 	pass
@@ -49,10 +60,20 @@ func Shoot():
 		fireball.global_transform = $Aim.global_transform
 		start_timer()
 		
-	
+func ice_Wall():
+	if not shoot_cooldown:
+		shoot_cooldown = true
+		var icewall = IceWall.instantiate()
+		get_parent().add_child(icewall)
+		icewall.position = $Aim.get_global_mouse_position()
+		start_timer()
+		
 func player_movement(delta):
 	if Input.is_action_pressed("fire") and shoot_cooldown == false:
 		Shoot()
+		
+	if Input.is_action_pressed("IceWall") and shoot_cooldown == false:
+		ice_Wall()
 		
 	if Input.is_action_pressed("alt_fire"):
 		pass
@@ -61,25 +82,38 @@ func player_movement(delta):
 		play_anim(1)
 		velocity.x = SPEED
 		velocity.y = 0
+		$ParticlesMove.emitting = true
+		$ParticlesMove.position.x = -5
+		$ParticlesMove.position.y = 0
 	elif Input.is_action_pressed("left"):
 		current_dir = "left"
 		play_anim(1)
 		velocity.x = -SPEED
 		velocity.y = 0
+		$ParticlesMove.emitting = true
+		$ParticlesMove.position.x = 5
+		$ParticlesMove.position.y = 0
 	elif Input.is_action_pressed("down"):
 		current_dir = "down"
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = SPEED
+		$ParticlesMove.emitting = true
+		$ParticlesMove.position.x = 2
+		$ParticlesMove.position.y = -5
 	elif Input.is_action_pressed("up"):
 		current_dir = "up"
 		play_anim(1)
 		velocity.x = 0
 		velocity.y = -SPEED
+		$ParticlesMove.emitting = true 
+		$ParticlesMove.position.x = 2
+		$ParticlesMove.position.y = 5
 	else:
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
+		$ParticlesMove.emitting = false
 		
 func play_anim(movement):
 	var dir = current_dir
@@ -125,8 +159,13 @@ func _on_player_combatbox_body_exited(body):
 		enemy_in_attack_range = false
 		
 func _on_player_combatbox_area_entered(area):
-	if area.has_method("arrow"):
-		enemy_in_attack_range = true
+	if area.has_method("arrow") == true:
+		cur_hp -= 2
+		healthBar.value = cur_hp
+		$attack_cooldown.start()
+		print("Player's health is %s" % [str(cur_hp)])
+	#if area.is_in_group("fireball"):
+		#pass
 		
 func _on_player_combatbox_area_exited(area):
 	if area.has_method("arrow"):
@@ -136,12 +175,16 @@ func _on_player_combatbox_area_exited(area):
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
 		cur_hp -= 2
+		healthBar.value = cur_hp
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print("Player's health is %s" % [str(cur_hp)])
 		
 
-
+func music(delta):
+	if $AudioStreamPlayer.playing == false: 
+		$AudioStreamPlayer.play = true
+		
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
@@ -151,3 +194,44 @@ func _on_attack_cooldown_timeout():
 
 
 
+
+
+
+func _on_grab_area_area_entered(area):
+	if area.is_in_group("loot"):
+		area.target = self
+
+
+func _on_collect_area_area_entered(area):
+	if area.is_in_group("loot"):
+		var gem_exp = area.collect()
+		calculate_experience(gem_exp)
+		
+func calculate_experience(gem_exp):
+	var exp_required = calculate_experiencecap()
+	collected_experience += gem_exp
+	if experience + collected_experience >= exp_required: #level up
+		collected_experience -= exp_required - experience
+		experience_level += 1
+		lblLevel.text = str("Level: ",experience_level) 
+		experience = 0
+		exp_required = calculate_experiencecap()
+		calculate_experience(0)
+	else:
+		experience += collected_experience
+		collected_experience = 0
+	
+	set_expbar(experience, exp_required)
+
+func calculate_experiencecap():
+	var exp_cap = experience_level
+	if experience_level < 20: 
+		exp_cap = experience_level*5
+	elif experience_level < 40:
+		exp_cap + 95 * (experience_level - 19)*8
+	else:
+		exp_cap = 255 + (experience_level - 39)*12
+	return exp_cap
+func set_expbar(set_value = 1, set_max_value = 100):
+	expBar.value = set_value
+	expBar.max_value = set_max_value

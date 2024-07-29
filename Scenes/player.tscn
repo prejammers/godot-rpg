@@ -1,62 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=28 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
+[ext_resource type="Texture2D" uid="uid://chx4qy5wy4vvh" path="res://Art/Tileset/Shadow enemy particle.png" id="4_8pcru"]
 [ext_resource type="Texture2D" uid="uid://bqq3nntnatthd" path="res://Art/Walk Purple.png" id="4_a3qtm"]
+[ext_resource type="Texture2D" uid="uid://cf0qtvnbopi52" path="res://Art/enemy/Health bar/Empty Enemy Health Bar.png" id="5_bh1wh"]
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
+[ext_resource type="Texture2D" uid="uid://cauxhmpsja4of" path="res://Art/enemy/Health bar/Outline of Player Health Bar.png" id="6_na6vs"]
+[ext_resource type="Texture2D" uid="uid://cat2sskx2htkt" path="res://Art/enemy/Health bar/Player Health Bar.png" id="7_okffo"]
+[ext_resource type="Texture2D" uid="uid://c56vltj3stf77" path="res://Art/GUI/Experience bar outline.png" id="8_0ysbb"]
+[ext_resource type="Texture2D" uid="uid://7mbanv4h2ukp" path="res://Art/GUI/Experience bar full.png" id="9_g6nfw"]
+[ext_resource type="FontFile" uid="uid://bwdgk204gkiyd" path="res://Art/GUI/BAUHS93.TTF" id="10_l2uha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
 radius = 7.0
-
-[sub_resource type="Animation" id="Animation_6poxe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_ubhcl")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Character Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [30]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Character Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Character Sprite:frame_coords")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 3)]
-}
 
 [sub_resource type="Animation" id="Animation_w4nuu"]
 resource_name = "idle_down"
@@ -556,7 +512,6 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ybpxq"]
 _data = {
-"RESET": SubResource("Animation_6poxe"),
 "idle_down": SubResource("Animation_w4nuu"),
 "idle_left": SubResource("Animation_4lt8y"),
 "idle_right": SubResource("Animation_4lggp"),
@@ -579,6 +534,26 @@ func _process(delta):
 [sub_resource type="CircleShape2D" id="CircleShape2D_mlvib"]
 radius = 14.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pi311"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 20
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_bn8j3"]
+_data = [Vector2(0, 0.192742), 0.0, 0.0, 0, 0, Vector2(0.403101, 0.287097), 0.0, 0.0, 0, 0, Vector2(0.647287, 0), -1.34442, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_e4jdn"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1ww5"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u21fk"]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_khb6h")
@@ -590,19 +565,15 @@ shape = SubResource("CircleShape2D_1hgcr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-limit_left = 67
-limit_top = -1
-limit_right = 817
-limit_bottom = 455
 position_smoothing_enabled = true
 
 [node name="Character Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.235, 0.235)
-texture = ExtResource("5_ubhcl")
+texture = ExtResource("4_a3qtm")
 hframes = 18
 vframes = 4
-frame = 54
+frame = 61
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -616,16 +587,90 @@ position = Vector2(-7, 5)
 script = SubResource("GDScript_tlgsq")
 
 [node name="player_combatbox" type="Area2D" parent="."]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_combatbox"]
-position = Vector2(-8, 2)
 shape = SubResource("CircleShape2D_mlvib")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="ParticlesMove" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_pi311")
+position = Vector2(4.19, 7.92)
+amount = 10
+texture = ExtResource("4_8pcru")
+spread = 41.12
+gravity = Vector2(0, 0)
+initial_velocity_min = 9.06
+initial_velocity_max = 16.26
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_bn8j3")
+color_ramp = SubResource("Gradient_e4jdn")
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="." groups=["Healthbar"]]
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 288.0
+offset_bottom = 144.0
+scale = Vector2(0.085, 0.085)
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("5_bh1wh")
+texture_over = ExtResource("6_na6vs")
+texture_progress = ExtResource("7_okffo")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_o1ww5")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_u21fk")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUILayer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.35)
+texture_over = ExtResource("8_0ysbb")
+texture_progress = ExtResource("9_g6nfw")
+
+[node name="lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 11.87
+offset_right = 1675.0
+offset_bottom = 34.87
+scale = Vector2(1.85, 4.895)
+theme_override_colors/font_color = Color(1, 0.462745, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_l2uha")
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
 [connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]
 [connection signal="body_entered" from="player_combatbox" to="." method="_on_player_combatbox_body_entered"]
 [connection signal="body_exited" from="player_combatbox" to="." method="_on_player_combatbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
