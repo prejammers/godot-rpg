@@ -13,6 +13,9 @@ var dead = false
 @onready var healthBar = $EntityHealthBar
 @onready var death_sound = $Explosion 
 @onready var projectile_scene = load("res://Scenes/enemy_fireball.tscn")
+var exp_gem = preload("res://Objects/experience_gem.tscn")
+@onready var loot_base = get_tree().get_first_node_in_group("loot")
+@export var experience = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -106,6 +109,10 @@ func death():
 	#$CPUParticles2D.emitting = false
 	$WizardAnimation.play("death_animation")
 	player_chase = false
+	var new_gem = exp_gem.instantiate()
+	new_gem.global_position = global_position
+	new_gem.experience = experience
+	loot_base.call_deferred("add_child",new_gem)
 	#tween.tween_property($Sprite2D, "scale", Vector2(3,3), 1.5)
 	await get_tree().create_timer(.7).timeout
 	queue_free()

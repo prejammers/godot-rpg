@@ -322,7 +322,7 @@ _data = {
 
 [node name="wizard_skeleton" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_jy8pw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]

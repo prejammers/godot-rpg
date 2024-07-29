@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://daw2ger0thuag"]
 
-[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_s6s83"]
+[ext_resource type="Script" path="res://Scenes/enemy_fireball.gd" id="1_330rq"]
 [ext_resource type="Texture2D" uid="uid://dhah8sownmmni" path="res://Art/projectiles/Fire Ball.png" id="2_55kxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xw1hu"]
@@ -285,12 +285,12 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="enemy_fireball" type="Area2D" groups=["arrow"]]
 light_mask = 0
-visibility_layer = 2
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("1_s6s83")
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_330rq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["arrow"]]
 light_mask = 0
 visibility_layer = 2
 position = Vector2(0.5, 0)
@@ -337,4 +337,5 @@ anim_speed_max = 0.3
 anim_offset_min = 0.721
 anim_offset_max = 0.73
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3b51iu1fhfqp"]
+[gd_scene load_steps=28 format=3 uid="uid://c3b51iu1fhfqp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_khb6h"]
 [ext_resource type="Texture2D" uid="uid://chx4qy5wy4vvh" path="res://Art/Tileset/Shadow enemy particle.png" id="4_8pcru"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://b60hh262itxn4" path="res://Art/Idle Purple Hair.png" id="5_ubhcl"]
 [ext_resource type="Texture2D" uid="uid://cauxhmpsja4of" path="res://Art/enemy/Health bar/Outline of Player Health Bar.png" id="6_na6vs"]
 [ext_resource type="Texture2D" uid="uid://cat2sskx2htkt" path="res://Art/enemy/Health bar/Player Health Bar.png" id="7_okffo"]
+[ext_resource type="Texture2D" uid="uid://c56vltj3stf77" path="res://Art/GUI/Experience bar outline.png" id="8_0ysbb"]
+[ext_resource type="Texture2D" uid="uid://7mbanv4h2ukp" path="res://Art/GUI/Experience bar full.png" id="9_g6nfw"]
+[ext_resource type="FontFile" uid="uid://bwdgk204gkiyd" path="res://Art/GUI/BAUHS93.TTF" id="10_l2uha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hgcr"]
 radius = 7.0
@@ -546,6 +549,11 @@ point_count = 3
 interpolation_mode = 1
 colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1ww5"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u21fk"]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_khb6h")
@@ -582,7 +590,6 @@ script = SubResource("GDScript_tlgsq")
 collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_combatbox"]
-position = Vector2(-8, 2)
 shape = SubResource("CircleShape2D_mlvib")
 
 [node name="attack_cooldown" type="Timer" parent="."]
@@ -614,8 +621,55 @@ texture_under = ExtResource("5_bh1wh")
 texture_over = ExtResource("6_na6vs")
 texture_progress = ExtResource("7_okffo")
 
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_o1ww5")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_u21fk")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUILayer"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.35)
+texture_over = ExtResource("8_0ysbb")
+texture_progress = ExtResource("9_g6nfw")
+
+[node name="lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 11.87
+offset_right = 1675.0
+offset_bottom = 34.87
+scale = Vector2(1.85, 4.895)
+theme_override_colors/font_color = Color(1, 0.462745, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_l2uha")
+text = "Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [connection signal="area_entered" from="player_combatbox" to="." method="_on_player_combatbox_area_entered"]
 [connection signal="area_exited" from="player_combatbox" to="." method="_on_player_combatbox_area_exited"]
 [connection signal="body_entered" from="player_combatbox" to="." method="_on_player_combatbox_body_entered"]
 [connection signal="body_exited" from="player_combatbox" to="." method="_on_player_combatbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
