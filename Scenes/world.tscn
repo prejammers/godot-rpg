@@ -864,6 +864,7 @@ offset_left = 11.0
 offset_top = 60.0
 offset_right = 148.0
 offset_bottom = 109.0
+scale = Vector2(1.51, 1.51)
 theme_override_colors/font_color = Color(1, 0.415686, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Left click to shoot
@@ -911,7 +912,7 @@ position = Vector2(274, 186)
 [node name="slime_enemy" parent="." instance=ExtResource("8_0csme")]
 position = Vector2(497, 306)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_qfpqe")
 volume_db = -8.98
 autoplay = true

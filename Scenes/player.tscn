@@ -594,6 +594,7 @@ shape = SubResource("CircleShape2D_mlvib")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="ParticlesMove" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_pi311")

@@ -5,7 +5,6 @@ var hit = false
 var speed = 0
 var health = 2
 var dead = false
-
 func _physics_process(delta):
 	if hit == false:
 		global_position += transform.x * speed * delta
