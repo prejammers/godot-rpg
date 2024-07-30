@@ -869,7 +869,7 @@ theme_override_colors/font_color = Color(1, 0.415686, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Left click to shoot
 WASD to move
-Press 2 to spawn an Ice Wall 
+Press Right Click to spawn an Ice Wall 
 on mouse position"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var SPEED = 40
-var health = 50
+var health = 10
 var player_chase = true
 var player_colliding: bool = false
 var hit_cooldown:bool = false
@@ -13,7 +13,6 @@ var dead = false
 var exp_gem = preload("res://Objects/experience_gem.tscn")
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 @export var experience = 10
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -76,7 +75,7 @@ func enemy():
 func _on_player_collision_2_area_entered(area):
 	var damage
 	if area.has_method("fireball_deal_damage"):
-		damage = 5
+		damage = 1
 		take_damage(damage)
 		healthBar.value = health
 	pass # Replace with function body.

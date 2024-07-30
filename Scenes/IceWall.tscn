@@ -1,11 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://du1ixplrfcl35"]
+[gd_scene load_steps=46 format=3 uid="uid://du1ixplrfcl35"]
 
 [ext_resource type="Texture2D" uid="uid://rp1ipwsco6wr" path="res://Art/projectiles/icicle_variation1.png" id="1_632kw"]
 [ext_resource type="Script" path="res://Scripts/IceWall.gd" id="1_gyk4x"]
 [ext_resource type="AudioStream" uid="uid://da4ws00yykj4" path="res://Art/projectiles/Ice sound effect.wav" id="2_vhtn5"]
-[ext_resource type="Texture2D" uid="uid://cf0qtvnbopi52" path="res://Art/enemy/Health bar/Empty Enemy Health Bar.png" id="4_itvfj"]
-[ext_resource type="Texture2D" uid="uid://cauxhmpsja4of" path="res://Art/enemy/Health bar/Outline of Player Health Bar.png" id="5_5nsnf"]
-[ext_resource type="Texture2D" uid="uid://cat2sskx2htkt" path="res://Art/enemy/Health bar/Player Health Bar.png" id="6_g1drn"]
+[ext_resource type="Texture2D" uid="uid://bymm5fbl7m63s" path="res://Art/enemy/Health bar/Outline of Ice Wall Tally.png" id="4_cr4q1"]
+[ext_resource type="Texture2D" uid="uid://bn72sa0ytywrd" path="res://Art/enemy/Health bar/Ice Wall Tally Health.png" id="4_qn1a6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76riq"]
 radius = 11.0
@@ -225,7 +224,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Destruction",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -306,7 +305,7 @@ shape = SubResource("CapsuleShape2D_76riq")
 position = Vector2(0, -1.19209e-07)
 scale = Vector2(0.28, 0.257813)
 sprite_frames = SubResource("SpriteFrames_uf5m8")
-animation = &"Destruction"
+animation = &"Summon"
 
 [node name="IceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vhtn5")
@@ -321,8 +320,7 @@ offset_bottom = 144.0
 scale = Vector2(0.085, 0.085)
 max_value = 2.0
 value = 2.0
-texture_under = ExtResource("4_itvfj")
-texture_over = ExtResource("5_5nsnf")
-texture_progress = ExtResource("6_g1drn")
+texture_under = ExtResource("4_cr4q1")
+texture_progress = ExtResource("4_qn1a6")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

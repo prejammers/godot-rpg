@@ -105,7 +105,7 @@ func player_movement(delta):
 		timer.start()
 		#$attack_cooldown/label_value.set_text(str(timer.get_time_left()))
 		
-	if Input.is_action_pressed("IceWall") and shoot_cooldown:
+	if Input.is_action_pressed("alt_fire") and shoot_cooldown:
 		#var IceWall = IceWall.instance()
 		#ice_Wall()
 		# Disable shooting until timer's cooldown is complete

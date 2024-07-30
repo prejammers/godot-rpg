@@ -4,7 +4,7 @@ var speed = 100
 var hit = false
 @onready var fireshoot = $Fireball_shoot
 @onready var firehit = $Fireball_hit
-
+@export var firedamage = 1
 func _physics_process(delta):
 	if hit == false:
 		global_position += transform.x * speed * delta

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var SPEED = 30
-var health = 15
+var health = 3
 var player = null
 var player_is_near := false
 var player_is_colliding := false
@@ -85,7 +85,7 @@ func _on_hurtbox_body_exited(body):
 func _on_hurtbox_area_entered(area):
 	var damage
 	if area.has_method("fireball_deal_damage"):
-		damage = 5
+		damage = 1
 		take_damage(damage)
 		healthBar.value = health
 	pass # Replace with function body.
