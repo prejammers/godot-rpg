@@ -224,7 +224,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Destruction",
-"speed": 20.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -305,7 +305,7 @@ shape = SubResource("CapsuleShape2D_76riq")
 position = Vector2(0, -1.19209e-07)
 scale = Vector2(0.28, 0.257813)
 sprite_frames = SubResource("SpriteFrames_uf5m8")
-animation = &"Summon"
+animation = &"Destruction"
 
 [node name="IceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vhtn5")

@@ -610,8 +610,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_e4grt"]
 resource_name = "death_animation"
-length = 1.8
-loop_mode = 1
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -658,7 +657,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(18, 0), Vector2i(19, 0), Vector2i(19, 0)]
+"values": [Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(10, 0), Vector2i(11, 0), Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(17, 0), Vector2i(18, 0), Vector2i(19, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -816,6 +815,7 @@ script = SubResource("GDScript_tlgsq")
 
 [node name="player_combatbox" type="Area2D" parent="."]
 collision_layer = 5
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_combatbox"]
 shape = SubResource("CircleShape2D_mlvib")

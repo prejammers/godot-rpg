@@ -16,7 +16,7 @@ func _ready():
 	print("icewall spawned")
 	await get_tree().create_timer(5).timeout
 	$AnimatedSprite2D.play("Destruction")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(.5).timeout
 	queue_free()
 
 func fireball_deal_damage():
@@ -46,7 +46,7 @@ func death():
 	#var tween = create_tween()
 	get_node("icewall_combatbox").disabled = true 
 	$AnimatedSprite2D.play("Destruction")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(.5).timeout
 	queue_free()
 
 

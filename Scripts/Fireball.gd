@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 100
+var speed = 300
 var hit = false
 @onready var fireshoot = $Fireball_shoot
 @onready var firehit = $Fireball_hit

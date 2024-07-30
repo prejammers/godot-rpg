@@ -23,8 +23,11 @@ var collected_experience = 0
 
 #var shoot_cooldown: bool = false
 var timer = null
+var timer2 = null
 var shoot_delay = .5
+var wall_delay = 5
 var shoot_cooldown = true
+var wall_cooldown = true
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -37,12 +40,19 @@ func _ready():
 	timer.set_wait_time(shoot_delay)
 	timer.connect("timeout", Callable(self, "on_timeout_complete"))
 	add_child(timer)
+	timer2 = Timer.new()
+	timer2.set_one_shot(true)
+	timer2.set_wait_time(wall_delay)
+	timer2.connect("timeout", Callable(self, "on_timeout2_complete"))
+	add_child(timer2)
 	$PlayerAnimation.play("idle_down")
 	set_expbar(experience, calculate_experiencecap())
 
 #on timer's timeout complete
 func on_timeout_complete():
 	shoot_cooldown = true
+func on_timeout2_complete():
+	wall_cooldown = true
 func _process(delta):
 	pass
 	
@@ -101,23 +111,25 @@ func player_movement(delta):
 		fireball.global_transform = $Aim.global_transform
 		# Disable shooting until timer's cooldown is complete
 		shoot_cooldown = false
+		timer.set_wait_time(shoot_delay)
 		#start timer
 		timer.start()
 		#$attack_cooldown/label_value.set_text(str(timer.get_time_left()))
 		
-	if Input.is_action_pressed("alt_fire") and shoot_cooldown:
+	if Input.is_action_pressed("alt_fire") and wall_cooldown:
 		#var IceWall = IceWall.instance()
 		#ice_Wall()
 		# Disable shooting until timer's cooldown is complete
-		shoot_cooldown = false
 		var icewall = IceWall.instantiate()
 		get_parent().add_child(icewall)
 		icewall.position = $Aim.get_global_mouse_position()
+		wall_cooldown = false
 		#start timer
-		timer.start()
+		timer2.set_wait_time(wall_delay)
+		timer2.start()
 		
-	if Input.is_action_pressed("alt_fire"):
-		pass
+	#if Input.is_action_pressed("alt_fire"):
+		#pass
 	if Input.is_action_pressed("right"):
 		current_dir = "right"
 		play_anim(1)
