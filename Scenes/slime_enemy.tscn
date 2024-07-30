@@ -405,7 +405,7 @@ _data = {
 
 [node name="slime_enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2.645, 2.645)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_gxm2m")
 
@@ -454,8 +454,8 @@ offset_top = -14.0
 offset_right = 290.0
 offset_bottom = 146.0
 scale = Vector2(0.06, 0.06)
-max_value = 10.0
-value = 10.0
+max_value = 50.0
+value = 50.0
 texture_under = ExtResource("4_0yqow")
 texture_over = ExtResource("5_58fs7")
 texture_progress = ExtResource("6_am55o")
