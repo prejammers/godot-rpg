@@ -405,7 +405,7 @@ _data = {
 
 [node name="slime_enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2.645, 2.645)
-collision_layer = 2
+collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_gxm2m")
 
@@ -416,14 +416,12 @@ shape = SubResource("CapsuleShape2D_qra0v")
 
 [node name="PlayerDetection" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerDetection"]
 shape = SubResource("CircleShape2D_i66n7")
 
 [node name="PlayerCollision2" type="Area2D" parent="CollisionShape2D" groups=["Enemy"]]
-collision_layer = 0
-collision_mask = 3
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/PlayerCollision2" groups=["Enemy"]]
 position = Vector2(-9.01394e-08, 0)

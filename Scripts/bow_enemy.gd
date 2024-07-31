@@ -43,7 +43,7 @@ func _physics_process(delta):
 		if direction.x > 0: #move right
 			if direction.x * 1 > direction.y * 1:
 				$BowAnimation.play("bow_right")
-		elif direction.x < 0: #move left
+		elif direction.x < 0 or direction.x == 0: #move left
 			if direction.x * 1 < direction.y * 1:
 				$BowAnimation.play("bow_left") 
 	

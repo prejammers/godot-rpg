@@ -22,8 +22,8 @@ point_count = 3
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Arrow" type="Area2D" groups=["arrow"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_nb6rq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

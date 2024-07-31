@@ -23,6 +23,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	#var direction = global_position.direction_to(player.global_position)
+	#var velocity = direction * SPEED
+	#move_and_collide(velocity * delta)
 	#if health <= 0:
 		#queue_free()
 	#if player_colliding == true and hit_cooldown == false:
@@ -34,7 +37,6 @@ func _physics_process(delta):
 	if player_chase:
 		var target_position = player.position
 		var direction = global_position.direction_to(player.global_position)
-		#direction = (target_position - position).normalized()
 		var velocity = direction * SPEED
 		move_and_collide(velocity * delta)
 		#print(direction)
@@ -60,9 +62,9 @@ func start_timer():
 func _on_player_detection_body_entered(body):
 	player = body
 	player_chase = true
-func _on_player_detection_body_exited(body):
-	player = body
-	player_chase = false
+#func _on_player_detection_body_exited(body):
+	#player = body
+	#player_chase = false
 	
 	
 func _on_player_collision_body_entered(body):

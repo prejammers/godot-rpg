@@ -8,15 +8,16 @@ var cur_hp = 10
 var player_alive = true
 @onready var healthBar = $PlayerHealthBar
 @onready var death_sound = $Explosion 
+@onready var music2 = $MainSong
+@onready var audio_stream_player: AudioStreamPlayer = $MainSong
 const FireBall = preload("res://Scenes/Fireball.tscn")
 const IceWall = preload("res://Scenes/IceWall.tscn")
 var current_dir = "none"
 var SPEED = 100
-
+var able_to_move = true
 var experience = 0
 var experience_level = 1
 var collected_experience = 0
-
 #GUI
 @onready var expBar = get_node("GUILayer/GUI/ExperienceBar") 
 @onready var lblLevel = get_node("GUILayer/GUI/ExperienceBar/lbl_level")
@@ -34,6 +35,16 @@ func _input(event):
 		get_tree().quit() #exits the game when pressing escape
 
 func _ready():
+	#audio_stream_player.play(music2)
+	#audio_stream_player.loop()
+	#var audio_stream = audio_stream_player.stream as AudioStreamInteractive
+	#var playback = audio_stream_player.get_stream_playback() as AudioStreamPlaybackInteractive
+	#for i in audio_stream.clip_count:
+		#var clip_name = audio_stream.get_clip_name(i)
+		#var button = Button.new()
+		#button.text = clip_name
+		#h_box_container.add_child(button)
+		#button.pressed.connect(func(): playback.switch_to_clip_by_name(clip_name))
 	#create timer for shoot delay
 	timer = Timer.new()
 	timer.set_one_shot(true)
@@ -67,10 +78,11 @@ func _physics_process(delta):
 		#cur_hp = 0
 		##var shoot_cooldown = true
 	if cur_hp <= 0 and player_alive:
+		able_to_move = false
 		death()
 func death():
-	SPEED = 0
 	player_alive = false
+	SPEED = 0
 	death_sound.play()
 	#$PlayerAnimation.play("death_animation")
 	play_anim(0)
@@ -171,34 +183,35 @@ func player_movement(delta):
 func play_anim(movement):
 	var dir = current_dir
 	var anim = $"Character Sprite"
-	if dir == "right":
+	able_to_move = true
+	if dir == "right" and able_to_move:
 		if movement == 1:
 			$PlayerAnimation.play("walk_right")
 		elif movement == 0:
 			#anim.play("side_idle")
 			$PlayerAnimation.play("idle_right")
-	if dir == "left":
+	if dir == "left" and able_to_move:
 		if movement == 1:
 			$PlayerAnimation.play("walk_left")
 			#anim.play("walking")
 		elif movement == 0:
 			#anim.play("side_idle")
 			$PlayerAnimation.play("idle_left")
-	if dir == "up":
+	if dir == "up" and able_to_move:
 		if movement == 1:
 			$PlayerAnimation.play("walk_up")
 			#anim.play("walk_up")
 		elif movement == 0:
 			$PlayerAnimation.play("idle_up")
 			#anim.play("idle_up")
-	if dir == "down":
+	if dir == "down" and able_to_move:
 		if movement == 1:
 			$PlayerAnimation.play("walk_down")
 			#anim.play("walk_down")
 		elif movement == 0:
 			$PlayerAnimation.play("idle_down")
 			#anim.play("idle_down")
-	elif player_alive == false and movement == 0:
+	elif player_alive and able_to_move == false:
 		$PlayerAnimation.play("death_animation")
 		$ParticlesMove.emitting = false
 
@@ -293,3 +306,10 @@ func set_expbar(set_value = 1, set_max_value = 100):
 func levelup():
 	if experience_level == 2:
 		shoot_delay - .2
+
+
+#func _on_player_animation_animation_finished(anim_name):
+	#if anim_name("death_animation"):
+		#able to move
+		#disable func play_anim(movement):
+

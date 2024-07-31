@@ -290,14 +290,16 @@ animations = [{
 }]
 
 [node name="IceWall" type="Area2D"]
-light_mask = 3
-visibility_layer = 3
+light_mask = 0
+visibility_layer = 7
 scale = Vector2(2.81, 2.81)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_gyk4x")
 
 [node name="icewall_combatbox" type="CollisionShape2D" parent="."]
-light_mask = 3
-visibility_layer = 3
+light_mask = 0
+visibility_layer = 0
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_76riq")
 

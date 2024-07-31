@@ -12,7 +12,7 @@ func arrow():
 	pass
 
 func _on_area_entered(area):
-	if area.has_method("fireball_deal_damage"):
+	if area.has_method("fireball_deal_damage") or area.is_in_group("Player") or area.is_in_group("objects"):
 		queue_free()
 
 

@@ -286,7 +286,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [node name="enemy_fireball" type="Area2D" groups=["arrow"]]
 light_mask = 0
 visibility_layer = 3
-collision_layer = 3
+collision_layer = 7
 collision_mask = 3
 script = ExtResource("1_330rq")
 

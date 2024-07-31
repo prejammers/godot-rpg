@@ -72,7 +72,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_rrtk7"]
 resource_name = "bow_down"
-length = 2.7
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -125,7 +125,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_g0gh8"]
 resource_name = "bow_left"
-length = 2.7
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -178,7 +178,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_6t5xp"]
 resource_name = "bow_right"
-length = 2.7
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -231,7 +231,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_baic0"]
 resource_name = "bow_up"
-length = 2.7
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -345,14 +345,15 @@ _data = {
 }
 
 [node name="bow_enemy" type="CharacterBody2D" groups=["Enemy"]]
-collision_layer = 3
-collision_mask = 2
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_gv1d2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tm15e")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 scale = Vector2(1.01603, 1.125)
@@ -360,7 +361,7 @@ shape = SubResource("CircleShape2D_aq8v7")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1, -0.5)
@@ -379,7 +380,7 @@ vframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_7l2ij")
 }
-speed_scale = 3.0
+speed_scale = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
